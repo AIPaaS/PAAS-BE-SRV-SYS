@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<context:component-scan base-package="com.aic.paas.sys.provider.**" />
+	
+	<import resource="classpath:spring/spring-paas-sys-db.xml"/>
+	
+	<!-- base -->
+	<bean id="SysCodeSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysCodeSvcImpl" />
+	<bean id="SysModuRoleSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysModuRoleSvcImpl" />
+	<bean id="SysMenuSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysMenuSvcImpl" />
+	<bean id="SysModuSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysModuSvcImpl" />
+	<bean id="SysOpRoleSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysOpRoleSvcImpl" />
+	<bean id="SysOpSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysOpSvcImpl" >
+		<property name="defaultPwd" value="${project.sysuser.default.pwd}" />
+	</bean>
+	<bean id="SysRegionSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysRegionSvcImpl" />
+	<bean id="SysRoleSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysRoleSvcImpl" />
+	<bean id="SysLoginLogSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysLoginLogSvcImpl" />
+	<bean id="SysOpOrgSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysOpOrgSvcImpl" />
+	<bean id="SysOrgSvc" class="com.aic.paas.sys.provider.svc.base.impl.SysOrgSvcImpl" />
+	
+	
+	<!-- auth -->
+	<bean id="SysResAuthSvc" class="com.aic.paas.sys.provider.svc.auth.impl.SysResAuthSvcImpl" />
+	
+	
+	
+	
+	<!-- frame -->
+	<bean id="SysFrameSvc" class="com.aic.paas.sys.provider.svc.frame.impl.SysFrameSvcImpl" />
+	
+	
+	
+	<bean id="MerchentSvc" class="com.aic.paas.sys.provider.svc.mnt.impl.MerchentSvcImpl" >
+		<property name="mntDefaultRoleId" value="${project.mnt.default.roleId}" />
+	</bean>
+	
+	
+</beans>

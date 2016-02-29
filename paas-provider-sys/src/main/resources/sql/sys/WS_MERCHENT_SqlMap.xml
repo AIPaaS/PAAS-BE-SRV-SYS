@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WS_MERCHENT">
+
+
+	<resultMap class="com.aic.paas.sys.provider.bean.WsMerchent" id="queryResult">
+		<result column="ID" jdbcType="BIGINT" property="id"/>	<!-- ID -->
+		<result column="MNT_CODE" jdbcType="VARCHAR" property="mntCode"/>	<!-- 租户代码 -->
+		<result column="MNT_NAME" jdbcType="VARCHAR" property="mntName"/>	<!-- 租户名称 -->
+		<result column="MNT_PWD" jdbcType="VARCHAR" property="mntPwd"/>	<!-- 登录密码 -->
+		<result column="CC_CODE" jdbcType="VARCHAR" property="ccCode"/>	<!-- 成本中心编码 -->
+		<result column="CONTACT_NAME" jdbcType="VARCHAR" property="contactName"/>	<!-- 联系人姓名 -->
+		<result column="CONTACT_PHONE" jdbcType="VARCHAR" property="contactPhone"/>	<!-- 联系人电话 -->
+		<result column="CONTACT_PHONE2" jdbcType="VARCHAR" property="contactPhone2"/>	<!-- 联系人电话2 -->
+		<result column="CONTACT_EMAIL" jdbcType="VARCHAR" property="contactEmail"/>	<!-- 联系人邮箱 -->
+		<result column="STATUS" jdbcType="INTEGER" property="status"/>	<!-- 租户状态 -->
+		<result column="CHECKER_ID" jdbcType="BIGINT" property="checkerId"/>	<!-- 审核人ID -->
+		<result column="CHECKER_NAME" jdbcType="VARCHAR" property="checkerName"/>	<!-- 审核人姓名 -->
+		<result column="CHECK_TIME" jdbcType="BIGINT" property="checkTime"/>	<!-- 审核时间 -->
+		<result column="CHECK_DESC" jdbcType="VARCHAR" property="checkDesc"/>	<!-- 审核意见 -->
+		<result column="CUSTOM_1" jdbcType="BIGINT" property="custom1"/>	<!-- 备用字段_1 -->
+		<result column="CUSTOM_2" jdbcType="BIGINT" property="custom2"/>	<!-- 备用字段_2 -->
+		<result column="CUSTOM_3" jdbcType="BIGINT" property="custom3"/>	<!-- 备用字段_3 -->
+		<result column="CUSTOM_4" jdbcType="VARCHAR" property="custom4"/>	<!-- 备用字段_4 -->
+		<result column="CUSTOM_5" jdbcType="VARCHAR" property="custom5"/>	<!-- 备用字段_5 -->
+		<result column="CUSTOM_6" jdbcType="VARCHAR" property="custom6"/>	<!-- 备用字段_6 -->
+		<result column="DATA_STATUS" jdbcType="INTEGER" property="dataStatus"/>	<!-- 数据状态 -->
+		<result column="CREATE_TIME" jdbcType="BIGINT" property="createTime"/>	<!-- 创建时间 -->
+		<result column="MODIFY_TIME" jdbcType="BIGINT" property="modifyTime"/>	<!-- 修改时间 -->
+	</resultMap>
+	
+
+	<sql id="sql_query_where">
+		<isNotEmpty prepend="and" property="cdt.id" >
+			ID = #cdt.id:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="ids" >
+			ID in ($ids$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startId" >
+			<![CDATA[ ID >= #cdt.startId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endId" >
+			<![CDATA[ ID <= #cdt.endId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mntCode" >
+			MNT_CODE like #cdt.mntCode:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mntCodeEqual" >
+			MNT_CODE = #cdt.mntCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="mntCodes" >
+			MNT_CODE in ($mntCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mntName" >
+			MNT_NAME like #cdt.mntName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mntPwd" >
+			MNT_PWD like #cdt.mntPwd:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mntPwdEqual" >
+			MNT_PWD = #cdt.mntPwdEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="mntPwds" >
+			MNT_PWD in ($mntPwds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.ccCode" >
+			CC_CODE like #cdt.ccCode:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.ccCodeEqual" >
+			CC_CODE = #cdt.ccCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="ccCodes" >
+			CC_CODE in ($ccCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactName" >
+			CONTACT_NAME like #cdt.contactName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactNameEqual" >
+			CONTACT_NAME = #cdt.contactNameEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactNames" >
+			CONTACT_NAME in ($contactNames$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactPhone" >
+			CONTACT_PHONE like #cdt.contactPhone:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactPhoneEqual" >
+			CONTACT_PHONE = #cdt.contactPhoneEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactPhones" >
+			CONTACT_PHONE in ($contactPhones$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactPhone2" >
+			CONTACT_PHONE2 like #cdt.contactPhone2:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactPhone2Equal" >
+			CONTACT_PHONE2 = #cdt.contactPhone2Equal:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactPhone2s" >
+			CONTACT_PHONE2 in ($contactPhone2s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactEmail" >
+			CONTACT_EMAIL like #cdt.contactEmail:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.status" >
+			STATUS = #cdt.status:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="statuss" >
+			STATUS in ($statuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startStatus" >
+			<![CDATA[ STATUS >= #cdt.startStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endStatus" >
+			<![CDATA[ STATUS <= #cdt.endStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.checkerId" >
+			CHECKER_ID = #cdt.checkerId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="checkerIds" >
+			CHECKER_ID in ($checkerIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCheckerId" >
+			<![CDATA[ CHECKER_ID >= #cdt.startCheckerId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCheckerId" >
+			<![CDATA[ CHECKER_ID <= #cdt.endCheckerId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.checkerName" >
+			CHECKER_NAME like #cdt.checkerName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.checkerNameEqual" >
+			CHECKER_NAME = #cdt.checkerNameEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="checkerNames" >
+			CHECKER_NAME in ($checkerNames$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.checkTime" >
+			CHECK_TIME = #cdt.checkTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="checkTimes" >
+			CHECK_TIME in ($checkTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCheckTime" >
+			<![CDATA[ CHECK_TIME >= #cdt.startCheckTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCheckTime" >
+			<![CDATA[ CHECK_TIME <= #cdt.endCheckTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.checkDesc" >
+			CHECK_DESC like #cdt.checkDesc:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom1" >
+			CUSTOM_1 = #cdt.custom1:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom1s" >
+			CUSTOM_1 in ($custom1s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom1" >
+			<![CDATA[ CUSTOM_1 >= #cdt.startCustom1:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom1" >
+			<![CDATA[ CUSTOM_1 <= #cdt.endCustom1:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom2" >
+			CUSTOM_2 = #cdt.custom2:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom2s" >
+			CUSTOM_2 in ($custom2s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom2" >
+			<![CDATA[ CUSTOM_2 >= #cdt.startCustom2:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom2" >
+			<![CDATA[ CUSTOM_2 <= #cdt.endCustom2:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom3" >
+			CUSTOM_3 = #cdt.custom3:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom3s" >
+			CUSTOM_3 in ($custom3s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom3" >
+			<![CDATA[ CUSTOM_3 >= #cdt.startCustom3:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom3" >
+			<![CDATA[ CUSTOM_3 <= #cdt.endCustom3:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom4" >
+			CUSTOM_4 like #cdt.custom4:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom5" >
+			CUSTOM_5 like #cdt.custom5:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom6" >
+			CUSTOM_6 like #cdt.custom6:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.dataStatus" >
+			DATA_STATUS = #cdt.dataStatus:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="dataStatuss" >
+			DATA_STATUS in ($dataStatuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startDataStatus" >
+			<![CDATA[ DATA_STATUS >= #cdt.startDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endDataStatus" >
+			<![CDATA[ DATA_STATUS <= #cdt.endDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.createTime" >
+			CREATE_TIME = #cdt.createTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="createTimes" >
+			CREATE_TIME in ($createTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCreateTime" >
+			<![CDATA[ CREATE_TIME >= #cdt.startCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCreateTime" >
+			<![CDATA[ CREATE_TIME <= #cdt.endCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifyTime" >
+			MODIFY_TIME = #cdt.modifyTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifyTimes" >
+			MODIFY_TIME in ($modifyTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModifyTime" >
+			<![CDATA[ MODIFY_TIME >= #cdt.startModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModifyTime" >
+			<![CDATA[ MODIFY_TIME <= #cdt.endModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+	</sql>
+	
+
+	<sql id="sql_update_columns">
+		<isNotNull prepend="," property="record.id"> 
+			ID = #record.id:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.mntCode"> 
+			MNT_CODE = #record.mntCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.mntName"> 
+			MNT_NAME = #record.mntName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.mntPwd"> 
+			MNT_PWD = #record.mntPwd:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.ccCode"> 
+			CC_CODE = #record.ccCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactName"> 
+			CONTACT_NAME = #record.contactName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactPhone"> 
+			CONTACT_PHONE = #record.contactPhone:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactPhone2"> 
+			CONTACT_PHONE2 = #record.contactPhone2:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactEmail"> 
+			CONTACT_EMAIL = #record.contactEmail:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.status"> 
+			STATUS = #record.status:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.checkerId"> 
+			CHECKER_ID = #record.checkerId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.checkerName"> 
+			CHECKER_NAME = #record.checkerName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.checkTime"> 
+			CHECK_TIME = #record.checkTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.checkDesc"> 
+			CHECK_DESC = #record.checkDesc:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom1"> 
+			CUSTOM_1 = #record.custom1:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom2"> 
+			CUSTOM_2 = #record.custom2:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom3"> 
+			CUSTOM_3 = #record.custom3:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom4"> 
+			CUSTOM_4 = #record.custom4:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom5"> 
+			CUSTOM_5 = #record.custom5:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom6"> 
+			CUSTOM_6 = #record.custom6:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.dataStatus"> 
+			DATA_STATUS = #record.dataStatus:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.createTime"> 
+			CREATE_TIME = #record.createTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifyTime"> 
+			MODIFY_TIME = #record.modifyTime:BIGINT#
+		</isNotNull>
+	</sql>
+	
+
+	<sql id="sql_query_columns">
+		ID, MNT_CODE, MNT_NAME, MNT_PWD, CC_CODE, CONTACT_NAME, 
+		CONTACT_PHONE, CONTACT_PHONE2, CONTACT_EMAIL, STATUS, CHECKER_ID, CHECKER_NAME, 
+		CHECK_TIME, CHECK_DESC, CUSTOM_1, CUSTOM_2, CUSTOM_3, CUSTOM_4, 
+		CUSTOM_5, CUSTOM_6, DATA_STATUS, CREATE_TIME, MODIFY_TIME
+	</sql>
+	
+
+	
+
+	<select id="selectList" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="WS_MERCHENT.sql_query_columns" />
+		from WS_MERCHENT 
+			<dynamic prepend="where" >
+				<include refid="WS_MERCHENT.sql_query_where"/>
+			</dynamic>
+		order by 
+			<isNotEmpty property="orders" >
+				$orders$
+			</isNotEmpty>
+			<isEmpty property="orders" >
+				ID
+			</isEmpty>
+	</select>
+	<select id="selectCount" parameterClass="java.util.Map" resultClass="java.lang.Long">
+		select count(1) from WS_MERCHENT 
+			<dynamic prepend="where" >
+				<include refid="WS_MERCHENT.sql_query_where"/>
+			</dynamic>
+	</select>
+	<select id="selectById" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="WS_MERCHENT.sql_query_columns" />
+		from WS_MERCHENT where ID=#id:BIGINT# and DATA_STATUS=1  
+	</select>
+	
+
+	
+
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into WS_MERCHENT(
+			ID, MNT_CODE, MNT_NAME, MNT_PWD, CC_CODE, 
+			CONTACT_NAME, CONTACT_PHONE, CONTACT_PHONE2, CONTACT_EMAIL, STATUS, 
+			CHECKER_ID, CHECKER_NAME, CHECK_TIME, CHECK_DESC, CUSTOM_1, 
+			CUSTOM_2, CUSTOM_3, CUSTOM_4, CUSTOM_5, CUSTOM_6, 
+			DATA_STATUS, CREATE_TIME, MODIFY_TIME)
+		values (
+			#record.id:BIGINT#, #record.mntCode:VARCHAR#, #record.mntName:VARCHAR#, #record.mntPwd:VARCHAR#, #record.ccCode:VARCHAR#, 
+			#record.contactName:VARCHAR#, #record.contactPhone:VARCHAR#, #record.contactPhone2:VARCHAR#, #record.contactEmail:VARCHAR#, #record.status:INTEGER#, 
+			#record.checkerId:BIGINT#, #record.checkerName:VARCHAR#, #record.checkTime:BIGINT#, #record.checkDesc:VARCHAR#, #record.custom1:BIGINT#, 
+			#record.custom2:BIGINT#, #record.custom3:BIGINT#, #record.custom4:VARCHAR#, #record.custom5:VARCHAR#, #record.custom6:VARCHAR#, 
+			#record.dataStatus:INTEGER#, #record.createTime:BIGINT#, #record.modifyTime:BIGINT#)
+	</insert>
+	
+
+	
+
+	<update id="updateById" parameterClass="java.util.Map">
+		update WS_MERCHENT
+			<dynamic prepend="set" > 
+				<include refid="WS_MERCHENT.sql_update_columns"/> 
+			</dynamic>
+		where ID = #id:BIGINT#
+	</update>
+	<update id="updateByCdt" parameterClass="java.util.Map">
+		update WS_MERCHENT
+			<dynamic prepend="set" > 
+				<include refid="WS_MERCHENT.sql_update_columns"/> 
+			</dynamic>
+			<dynamic prepend="where" > 
+				<include refid="WS_MERCHENT.sql_query_where"/> 
+			</dynamic>
+	</update>
+	
+	
+
+	
+
+	<delete id="deleteById" parameterClass="java.util.Map">
+		delete from WS_MERCHENT where ID = #id:BIGINT#
+	</delete>
+	<delete id="deleteByCdt" parameterClass="java.util.Map">
+		delete from WS_MERCHENT
+			<dynamic prepend="where" > 
+				<include refid="WS_MERCHENT.sql_query_where"/> 
+			</dynamic>
+	</delete>
+	
+
+
+
+</sqlMap>

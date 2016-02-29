@@ -1,0 +1,5 @@
+2016-02-26 16:52:13,340 [main] INFO  com.alibaba.dubbo.container.Main (Main.java:81) -  [DUBBO] Dubbo Log4jContainer started!, dubbo version: 2.8.3, current host: 127.0.0.1
+2016-02-26 16:52:13,369 [main] INFO  org.springframework.context.support.AbstractApplicationContext (AbstractApplicationContext.java:503) - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f782da8: startup date [Fri Feb 26 16:52:13 CST 2016]; root of context hierarchy
+2016-02-26 16:52:13,371 [main] INFO  org.springframework.beans.factory.support.DefaultListableBeanFactory (DefaultListableBeanFactory.java:577) - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5e98c92c: defining beans []; root of factory hierarchy
+2016-02-26 16:52:13,372 [main] INFO  com.alibaba.dubbo.container.Main (Main.java:81) -  [DUBBO] Dubbo SpringContainer started!, dubbo version: 2.8.3, current host: 127.0.0.1
+2016-02-26 16:52:26,644 [main-SendThread(10.1.253.30:2182)] DEBUG org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:717) - Got ping response for sessionid: 0x15317e5cc520007 after 1ms

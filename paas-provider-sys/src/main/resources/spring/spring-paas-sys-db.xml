@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        
+        <import resource="classpath:spring/spring-paas-sys-db-definition.xml" />
+        
+        
+        <bean id="dataSource_paas_sys" class="com.binary.framework.spring.DataSourceAdapter">
+        	<constructor-arg value="${ds.jdbc.paas.sys.dsname}" />
+			<constructor-arg ref="com.binary.jdbc.JdbcOperatorFactory" />
+		</bean>
+		
+		<bean id="sqlMapClientTemplate_paas_sys" class="com.binary.framework.ibatis.IBatisSqlMapClientTemplate" primary="true">
+			<property name="dataSource" ref="dataSource_paas_sys" />
+			<property name="sqlMapClient">
+				<bean class="com.binary.framework.ibatis.IBatisSqlMapClientFactory">
+					<property name="configLocations">
+						<list>
+							<description>排序：优先加载数据库表的sql定义（文件名带model字样），使得后续加载的自定义sql定义可以引用先加载的文件中的定义</description>
+							<value>classpath:sql/sql-map-paas-sys-config.xml</value>
+						</list>
+					</property>
+				</bean>
+			</property>
+			<property name="sqlExecutor">
+				<bean class="com.binary.framework.ibatis.IBatisSqlExecutor">
+					<property name="sqlHandlers">
+						<list>
+							<bean class="com.binary.framework.ibatis.PagingSqlHandler" />
+						</list>
+					</property>
+				</bean>
+			</property>
+		</bean>
+        
+        
+        
+        <!-- DAO -->
+        <bean abstract="true" id="dao.paas.sys.parent" >
+			<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate_paas_sys"/>
+		</bean>
+		
+		<bean class="com.aic.paas.sys.provider.db.impl.WsMerchentDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.WsMerchentDaoDefinition" />
+		</bean>
+		
+		
+		<!-- 权限管理 -->
+		<bean class="com.aic.paas.sys.provider.db.impl.SysCodeDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysCodeDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysCodeDefDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysCodeDefDaoDefinition" />
+		</bean>
+		
+		<bean class="com.aic.paas.sys.provider.db.impl.SysOrgDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysOrgDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysOrgTypeDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysOrgTypeDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysOpOrgDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysOpOrgDaoDefinition" />
+		</bean>
+		
+		<bean class="com.aic.paas.sys.provider.db.impl.SysMenuDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysMenuDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysModuRoleDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysModuRoleDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysModuDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysModuDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysModuResDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysModuResDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysOpDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysOpDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysOpRoleDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysOpRoleDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysRegionDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysRegionDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysRoleDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysRoleDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysModuDropDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysModuDropDaoDefinition" />
+		</bean>
+		<bean class="com.aic.paas.sys.provider.db.impl.SysLoginLogDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.SysLoginLogDaoDefinition" />
+		</bean>
+		
+		
+		
+</beans>

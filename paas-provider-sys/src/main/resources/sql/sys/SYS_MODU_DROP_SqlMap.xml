@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_MODU_DROP">
+
+
+	<resultMap class="com.aic.paas.sys.provider.bean.SysModuDrop" id="queryResult">
+		<result column="ID" jdbcType="BIGINT" property="id"/>	<!-- ID -->
+		<result column="MODU_ID" jdbcType="BIGINT" property="moduId"/>	<!-- 模块ID -->
+		<result column="DEF_CODE" jdbcType="VARCHAR" property="defCode"/>	<!-- 定义代码 -->
+		<result column="ADD_ATTRS" jdbcType="INTEGER" property="addAttrs"/>	<!-- 是否携带属性 -->
+		<result column="ADD_EMPTY" jdbcType="INTEGER" property="addEmpty"/>	<!-- 是否添加空行 -->
+		<result column="REMARK" jdbcType="VARCHAR" property="remark"/>	<!-- 描述 -->
+		<result column="DATA_STATUS" jdbcType="INTEGER" property="dataStatus"/>	<!-- 数据状态 -->
+		<result column="CREATOR" jdbcType="VARCHAR" property="creator"/>	<!-- 创建人 -->
+		<result column="MODIFIER" jdbcType="VARCHAR" property="modifier"/>	<!-- 修改人 -->
+		<result column="CREATE_TIME" jdbcType="BIGINT" property="createTime"/>	<!-- 创建时间 -->
+		<result column="MODIFY_TIME" jdbcType="BIGINT" property="modifyTime"/>	<!-- 修改时间 -->
+	</resultMap>
+	
+
+	<sql id="sql_query_where">
+		<isNotEmpty prepend="and" property="cdt.id" >
+			ID = #cdt.id:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="ids" >
+			ID in ($ids$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startId" >
+			<![CDATA[ ID >= #cdt.startId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endId" >
+			<![CDATA[ ID <= #cdt.endId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.moduId" >
+			MODU_ID = #cdt.moduId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="moduIds" >
+			MODU_ID in ($moduIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModuId" >
+			<![CDATA[ MODU_ID >= #cdt.startModuId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModuId" >
+			<![CDATA[ MODU_ID <= #cdt.endModuId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.defCode" >
+			DEF_CODE like #cdt.defCode:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.defCodeEqual" >
+			DEF_CODE = #cdt.defCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="defCodes" >
+			DEF_CODE in ($defCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.addAttrs" >
+			ADD_ATTRS = #cdt.addAttrs:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="addAttrss" >
+			ADD_ATTRS in ($addAttrss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startAddAttrs" >
+			<![CDATA[ ADD_ATTRS >= #cdt.startAddAttrs:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endAddAttrs" >
+			<![CDATA[ ADD_ATTRS <= #cdt.endAddAttrs:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.addEmpty" >
+			ADD_EMPTY = #cdt.addEmpty:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="addEmptys" >
+			ADD_EMPTY in ($addEmptys$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startAddEmpty" >
+			<![CDATA[ ADD_EMPTY >= #cdt.startAddEmpty:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endAddEmpty" >
+			<![CDATA[ ADD_EMPTY <= #cdt.endAddEmpty:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.remark" >
+			REMARK like #cdt.remark:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.dataStatus" >
+			DATA_STATUS = #cdt.dataStatus:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="dataStatuss" >
+			DATA_STATUS in ($dataStatuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startDataStatus" >
+			<![CDATA[ DATA_STATUS >= #cdt.startDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endDataStatus" >
+			<![CDATA[ DATA_STATUS <= #cdt.endDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creator" >
+			CREATOR like #cdt.creator:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creatorEqual" >
+			CREATOR = #cdt.creatorEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="creators" >
+			CREATOR in ($creators$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifier" >
+			MODIFIER like #cdt.modifier:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifierEqual" >
+			MODIFIER = #cdt.modifierEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifiers" >
+			MODIFIER in ($modifiers$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.createTime" >
+			CREATE_TIME = #cdt.createTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="createTimes" >
+			CREATE_TIME in ($createTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCreateTime" >
+			<![CDATA[ CREATE_TIME >= #cdt.startCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCreateTime" >
+			<![CDATA[ CREATE_TIME <= #cdt.endCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifyTime" >
+			MODIFY_TIME = #cdt.modifyTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifyTimes" >
+			MODIFY_TIME in ($modifyTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModifyTime" >
+			<![CDATA[ MODIFY_TIME >= #cdt.startModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModifyTime" >
+			<![CDATA[ MODIFY_TIME <= #cdt.endModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+	</sql>
+	
+
+	<sql id="sql_update_columns">
+		<isNotNull prepend="," property="record.id"> 
+			ID = #record.id:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.moduId"> 
+			MODU_ID = #record.moduId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.defCode"> 
+			DEF_CODE = #record.defCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.addAttrs"> 
+			ADD_ATTRS = #record.addAttrs:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.addEmpty"> 
+			ADD_EMPTY = #record.addEmpty:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.remark"> 
+			REMARK = #record.remark:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.dataStatus"> 
+			DATA_STATUS = #record.dataStatus:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.creator"> 
+			CREATOR = #record.creator:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifier"> 
+			MODIFIER = #record.modifier:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.createTime"> 
+			CREATE_TIME = #record.createTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifyTime"> 
+			MODIFY_TIME = #record.modifyTime:BIGINT#
+		</isNotNull>
+	</sql>
+	
+
+	<sql id="sql_query_columns">
+		ID, MODU_ID, DEF_CODE, ADD_ATTRS, ADD_EMPTY, REMARK, 
+		DATA_STATUS, CREATOR, MODIFIER, CREATE_TIME, MODIFY_TIME
+	</sql>
+	
+
+	
+
+	<select id="selectList" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_MODU_DROP.sql_query_columns" />
+		from SYS_MODU_DROP 
+			<dynamic prepend="where" >
+				<include refid="SYS_MODU_DROP.sql_query_where"/>
+			</dynamic>
+		order by 
+			<isNotEmpty property="orders" >
+				$orders$
+			</isNotEmpty>
+			<isEmpty property="orders" >
+				ID
+			</isEmpty>
+	</select>
+	<select id="selectCount" parameterClass="java.util.Map" resultClass="java.lang.Long">
+		select count(1) from SYS_MODU_DROP 
+			<dynamic prepend="where" >
+				<include refid="SYS_MODU_DROP.sql_query_where"/>
+			</dynamic>
+	</select>
+	<select id="selectById" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_MODU_DROP.sql_query_columns" />
+		from SYS_MODU_DROP where ID=#id:BIGINT# and DATA_STATUS=1  
+	</select>
+	
+
+	
+
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into SYS_MODU_DROP(
+			ID, MODU_ID, DEF_CODE, ADD_ATTRS, ADD_EMPTY, 
+			REMARK, DATA_STATUS, CREATOR, MODIFIER, CREATE_TIME, 
+			MODIFY_TIME)
+		values (
+			#record.id:BIGINT#, #record.moduId:BIGINT#, #record.defCode:VARCHAR#, #record.addAttrs:INTEGER#, #record.addEmpty:INTEGER#, 
+			#record.remark:VARCHAR#, #record.dataStatus:INTEGER#, #record.creator:VARCHAR#, #record.modifier:VARCHAR#, #record.createTime:BIGINT#, 
+			#record.modifyTime:BIGINT#)
+	</insert>
+	
+
+	
+
+	<update id="updateById" parameterClass="java.util.Map">
+		update SYS_MODU_DROP
+			<dynamic prepend="set" > 
+				<include refid="SYS_MODU_DROP.sql_update_columns"/> 
+			</dynamic>
+		where ID = #id:BIGINT#
+	</update>
+	<update id="updateByCdt" parameterClass="java.util.Map">
+		update SYS_MODU_DROP
+			<dynamic prepend="set" > 
+				<include refid="SYS_MODU_DROP.sql_update_columns"/> 
+			</dynamic>
+			<dynamic prepend="where" > 
+				<include refid="SYS_MODU_DROP.sql_query_where"/> 
+			</dynamic>
+	</update>
+	
+	
+
+	
+
+	<delete id="deleteById" parameterClass="java.util.Map">
+		delete from SYS_MODU_DROP where ID = #id:BIGINT#
+	</delete>
+	<delete id="deleteByCdt" parameterClass="java.util.Map">
+		delete from SYS_MODU_DROP
+			<dynamic prepend="where" > 
+				<include refid="SYS_MODU_DROP.sql_query_where"/> 
+			</dynamic>
+	</delete>
+	
+
+
+
+</sqlMap>

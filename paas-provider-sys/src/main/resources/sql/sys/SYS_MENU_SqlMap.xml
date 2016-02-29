@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_MENU">
+
+
+	<resultMap class="com.aic.paas.sys.provider.bean.SysMenu" id="queryResult">
+		<result column="ID" jdbcType="BIGINT" property="id"/>	<!-- ID -->
+		<result column="MENU_CODE" jdbcType="VARCHAR" property="menuCode"/>	<!-- 菜单代码 -->
+		<result column="MENU_NAME" jdbcType="VARCHAR" property="menuName"/>	<!-- 菜单名称 -->
+		<result column="PARENT_ID" jdbcType="BIGINT" property="parentId"/>	<!-- 上级菜单ID -->
+		<result column="MODU_ID" jdbcType="BIGINT" property="moduId"/>	<!-- 对应模块ID -->
+		<result column="MENU_TYPE" jdbcType="INTEGER" property="menuType"/>	<!-- 菜单类型 -->
+		<result column="MENU_DESC" jdbcType="VARCHAR" property="menuDesc"/>	<!-- 菜单描述 -->
+		<result column="MENU_IMG" jdbcType="VARCHAR" property="menuImg"/>	<!-- 菜单图标 -->
+		<result column="ORDER_NO" jdbcType="INTEGER" property="orderNo"/>	<!-- 显示排序 -->
+		<result column="IS_LEAF" jdbcType="INTEGER" property="isLeaf"/>	<!-- 是否末级 -->
+		<result column="IS_DIR" jdbcType="INTEGER" property="isDir"/>	<!-- 是否目录 -->
+		<result column="MENU_LEVEL" jdbcType="INTEGER" property="menuLevel"/>	<!-- 菜单层次级别 -->
+		<result column="MENU_LVL_PATH" jdbcType="VARCHAR" property="menuLvlPath"/>	<!-- 菜单层次路径 -->
+		<result column="STATUS" jdbcType="INTEGER" property="status"/>	<!-- 状态 -->
+		<result column="DATA_STATUS" jdbcType="INTEGER" property="dataStatus"/>	<!-- 数据状态 -->
+		<result column="CREATOR" jdbcType="VARCHAR" property="creator"/>	<!-- 创建人 -->
+		<result column="MODIFIER" jdbcType="VARCHAR" property="modifier"/>	<!-- 修改人 -->
+		<result column="CREATE_TIME" jdbcType="BIGINT" property="createTime"/>	<!-- 创建时间 -->
+		<result column="MODIFY_TIME" jdbcType="BIGINT" property="modifyTime"/>	<!-- 修改时间 -->
+	</resultMap>
+	
+
+	<sql id="sql_query_where">
+		<isNotEmpty prepend="and" property="cdt.id" >
+			ID = #cdt.id:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="ids" >
+			ID in ($ids$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startId" >
+			<![CDATA[ ID >= #cdt.startId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endId" >
+			<![CDATA[ ID <= #cdt.endId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuCode" >
+			MENU_CODE like #cdt.menuCode:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuCodeEqual" >
+			MENU_CODE = #cdt.menuCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="menuCodes" >
+			MENU_CODE in ($menuCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuName" >
+			MENU_NAME like #cdt.menuName:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.parentId" >
+			PARENT_ID = #cdt.parentId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="parentIds" >
+			PARENT_ID in ($parentIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startParentId" >
+			<![CDATA[ PARENT_ID >= #cdt.startParentId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endParentId" >
+			<![CDATA[ PARENT_ID <= #cdt.endParentId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.moduId" >
+			MODU_ID = #cdt.moduId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="moduIds" >
+			MODU_ID in ($moduIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModuId" >
+			<![CDATA[ MODU_ID >= #cdt.startModuId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModuId" >
+			<![CDATA[ MODU_ID <= #cdt.endModuId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuType" >
+			MENU_TYPE = #cdt.menuType:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="menuTypes" >
+			MENU_TYPE in ($menuTypes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startMenuType" >
+			<![CDATA[ MENU_TYPE >= #cdt.startMenuType:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endMenuType" >
+			<![CDATA[ MENU_TYPE <= #cdt.endMenuType:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuDesc" >
+			MENU_DESC like #cdt.menuDesc:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuImg" >
+			MENU_IMG like #cdt.menuImg:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orderNo" >
+			ORDER_NO = #cdt.orderNo:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="orderNos" >
+			ORDER_NO in ($orderNos$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startOrderNo" >
+			<![CDATA[ ORDER_NO >= #cdt.startOrderNo:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endOrderNo" >
+			<![CDATA[ ORDER_NO <= #cdt.endOrderNo:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.isLeaf" >
+			IS_LEAF = #cdt.isLeaf:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="isLeafs" >
+			IS_LEAF in ($isLeafs$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startIsLeaf" >
+			<![CDATA[ IS_LEAF >= #cdt.startIsLeaf:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endIsLeaf" >
+			<![CDATA[ IS_LEAF <= #cdt.endIsLeaf:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.isDir" >
+			IS_DIR = #cdt.isDir:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="isDirs" >
+			IS_DIR in ($isDirs$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startIsDir" >
+			<![CDATA[ IS_DIR >= #cdt.startIsDir:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endIsDir" >
+			<![CDATA[ IS_DIR <= #cdt.endIsDir:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuLevel" >
+			MENU_LEVEL = #cdt.menuLevel:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="menuLevels" >
+			MENU_LEVEL in ($menuLevels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startMenuLevel" >
+			<![CDATA[ MENU_LEVEL >= #cdt.startMenuLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endMenuLevel" >
+			<![CDATA[ MENU_LEVEL <= #cdt.endMenuLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.menuLvlPath" >
+			MENU_LVL_PATH like #cdt.menuLvlPath:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.status" >
+			STATUS = #cdt.status:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="statuss" >
+			STATUS in ($statuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startStatus" >
+			<![CDATA[ STATUS >= #cdt.startStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endStatus" >
+			<![CDATA[ STATUS <= #cdt.endStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.dataStatus" >
+			DATA_STATUS = #cdt.dataStatus:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="dataStatuss" >
+			DATA_STATUS in ($dataStatuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startDataStatus" >
+			<![CDATA[ DATA_STATUS >= #cdt.startDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endDataStatus" >
+			<![CDATA[ DATA_STATUS <= #cdt.endDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creator" >
+			CREATOR like #cdt.creator:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creatorEqual" >
+			CREATOR = #cdt.creatorEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="creators" >
+			CREATOR in ($creators$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifier" >
+			MODIFIER like #cdt.modifier:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifierEqual" >
+			MODIFIER = #cdt.modifierEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifiers" >
+			MODIFIER in ($modifiers$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.createTime" >
+			CREATE_TIME = #cdt.createTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="createTimes" >
+			CREATE_TIME in ($createTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCreateTime" >
+			<![CDATA[ CREATE_TIME >= #cdt.startCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCreateTime" >
+			<![CDATA[ CREATE_TIME <= #cdt.endCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifyTime" >
+			MODIFY_TIME = #cdt.modifyTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifyTimes" >
+			MODIFY_TIME in ($modifyTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModifyTime" >
+			<![CDATA[ MODIFY_TIME >= #cdt.startModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModifyTime" >
+			<![CDATA[ MODIFY_TIME <= #cdt.endModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+	</sql>
+	
+
+	<sql id="sql_update_columns">
+		<isNotNull prepend="," property="record.id"> 
+			ID = #record.id:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuCode"> 
+			MENU_CODE = #record.menuCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuName"> 
+			MENU_NAME = #record.menuName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.parentId"> 
+			PARENT_ID = #record.parentId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.moduId"> 
+			MODU_ID = #record.moduId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuType"> 
+			MENU_TYPE = #record.menuType:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuDesc"> 
+			MENU_DESC = #record.menuDesc:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuImg"> 
+			MENU_IMG = #record.menuImg:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orderNo"> 
+			ORDER_NO = #record.orderNo:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.isLeaf"> 
+			IS_LEAF = #record.isLeaf:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.isDir"> 
+			IS_DIR = #record.isDir:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuLevel"> 
+			MENU_LEVEL = #record.menuLevel:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.menuLvlPath"> 
+			MENU_LVL_PATH = #record.menuLvlPath:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.status"> 
+			STATUS = #record.status:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.dataStatus"> 
+			DATA_STATUS = #record.dataStatus:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.creator"> 
+			CREATOR = #record.creator:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifier"> 
+			MODIFIER = #record.modifier:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.createTime"> 
+			CREATE_TIME = #record.createTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifyTime"> 
+			MODIFY_TIME = #record.modifyTime:BIGINT#
+		</isNotNull>
+	</sql>
+	
+
+	<sql id="sql_query_columns">
+		ID, MENU_CODE, MENU_NAME, PARENT_ID, MODU_ID, MENU_TYPE, 
+		MENU_DESC, MENU_IMG, ORDER_NO, IS_LEAF, IS_DIR, MENU_LEVEL, 
+		MENU_LVL_PATH, STATUS, DATA_STATUS, CREATOR, MODIFIER, CREATE_TIME, 
+		MODIFY_TIME
+	</sql>
+	
+
+	
+
+	<select id="selectList" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_MENU.sql_query_columns" />
+		from SYS_MENU 
+			<dynamic prepend="where" >
+				<include refid="SYS_MENU.sql_query_where"/>
+			</dynamic>
+		order by 
+			<isNotEmpty property="orders" >
+				$orders$
+			</isNotEmpty>
+			<isEmpty property="orders" >
+				ID
+			</isEmpty>
+	</select>
+	<select id="selectCount" parameterClass="java.util.Map" resultClass="java.lang.Long">
+		select count(1) from SYS_MENU 
+			<dynamic prepend="where" >
+				<include refid="SYS_MENU.sql_query_where"/>
+			</dynamic>
+	</select>
+	<select id="selectById" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_MENU.sql_query_columns" />
+		from SYS_MENU where ID=#id:BIGINT# and DATA_STATUS=1  
+	</select>
+	
+
+	
+
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into SYS_MENU(
+			ID, MENU_CODE, MENU_NAME, PARENT_ID, MODU_ID, 
+			MENU_TYPE, MENU_DESC, MENU_IMG, ORDER_NO, IS_LEAF, 
+			IS_DIR, MENU_LEVEL, MENU_LVL_PATH, STATUS, DATA_STATUS, 
+			CREATOR, MODIFIER, CREATE_TIME, MODIFY_TIME)
+		values (
+			#record.id:BIGINT#, #record.menuCode:VARCHAR#, #record.menuName:VARCHAR#, #record.parentId:BIGINT#, #record.moduId:BIGINT#, 
+			#record.menuType:INTEGER#, #record.menuDesc:VARCHAR#, #record.menuImg:VARCHAR#, #record.orderNo:INTEGER#, #record.isLeaf:INTEGER#, 
+			#record.isDir:INTEGER#, #record.menuLevel:INTEGER#, #record.menuLvlPath:VARCHAR#, #record.status:INTEGER#, #record.dataStatus:INTEGER#, 
+			#record.creator:VARCHAR#, #record.modifier:VARCHAR#, #record.createTime:BIGINT#, #record.modifyTime:BIGINT#)
+	</insert>
+	
+
+	
+
+	<update id="updateById" parameterClass="java.util.Map">
+		update SYS_MENU
+			<dynamic prepend="set" > 
+				<include refid="SYS_MENU.sql_update_columns"/> 
+			</dynamic>
+		where ID = #id:BIGINT#
+	</update>
+	<update id="updateByCdt" parameterClass="java.util.Map">
+		update SYS_MENU
+			<dynamic prepend="set" > 
+				<include refid="SYS_MENU.sql_update_columns"/> 
+			</dynamic>
+			<dynamic prepend="where" > 
+				<include refid="SYS_MENU.sql_query_where"/> 
+			</dynamic>
+	</update>
+	
+	
+
+	
+
+	<delete id="deleteById" parameterClass="java.util.Map">
+		delete from SYS_MENU where ID = #id:BIGINT#
+	</delete>
+	<delete id="deleteByCdt" parameterClass="java.util.Map">
+		delete from SYS_MENU
+			<dynamic prepend="where" > 
+				<include refid="SYS_MENU.sql_query_where"/> 
+			</dynamic>
+	</delete>
+	
+
+
+
+</sqlMap>

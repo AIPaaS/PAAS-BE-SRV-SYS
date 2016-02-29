@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://code.alibabatech.com/schema/dubbo
+          http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	
+	<!-- 基础维护 -->
+	<dubbo:reference id="dubbo_SysCodeSvc" interface="com.aic.paas.sys.provider.svc.base.SysCodeSvc" />
+	<dubbo:reference id="dubbo_SysModuRoleSvc" interface="com.aic.paas.sys.provider.svc.base.SysModuRoleSvc" />
+	<dubbo:reference id="dubbo_SysMenuSvc" interface="com.aic.paas.sys.provider.svc.base.SysMenuSvc" />
+	<dubbo:reference id="dubbo_SysModuSvc" interface="com.aic.paas.sys.provider.svc.base.SysModuSvc" />
+	<dubbo:reference id="dubbo_SysOpRoleSvc" interface="com.aic.paas.sys.provider.svc.base.SysOpRoleSvc" />
+	<dubbo:reference id="dubbo_SysOpOrgSvc" interface="com.aic.paas.sys.provider.svc.base.SysOpOrgSvc" />
+	<dubbo:reference id="dubbo_SysOpSvc" interface="com.aic.paas.sys.provider.svc.base.SysOpSvc" />
+	<dubbo:reference id="dubbo_SysRegionSvc" interface="com.aic.paas.sys.provider.svc.base.SysRegionSvc" />
+	<dubbo:reference id="dubbo_SysRoleSvc" interface="com.aic.paas.sys.provider.svc.base.SysRoleSvc" />
+	<dubbo:reference id="dubbo_SysLoginLogSvc" interface="com.aic.paas.sys.provider.svc.base.SysLoginLogSvc" />
+	<dubbo:reference id="dubbo_SysOrgSvc" interface="com.aic.paas.sys.provider.svc.base.SysOrgSvc" />
+	
+	
+	<!-- 系统权限 -->
+	<dubbo:reference id="dubbo_SysResAuthSvc" interface="com.aic.paas.sys.provider.svc.auth.SysResAuthSvc" />
+	
+	
+</beans>
+
+
+

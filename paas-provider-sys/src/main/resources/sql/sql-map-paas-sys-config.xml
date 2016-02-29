@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings cacheModelsEnabled="true" lazyLoadingEnabled="false"
+		useStatementNamespaces="true" enhancementEnabled="true" />
+
+
+	<!-- SYS -->
+	<sqlMap resource="sql/sys/SYS_ORG_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_OP_ORG_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_ORG_TYPE_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_CODE_DEF_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_CODE_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_MODU_ROLE_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_MENU_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_MODU_RES_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_MODU_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_OP_ROLE_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_OP_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_REGION_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_ROLE_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_MODU_DROP_SqlMap.xml" />
+	<sqlMap resource="sql/sys/SYS_LOGIN_LOG_SqlMap.xml" />
+	<sqlMap resource="sql/ext/SYS_OP_EXT_SqlMap.xml" />
+	
+	
+	<sqlMap resource="sql/sys/WS_MERCHENT_SqlMap.xml" />
+	
+	
+</sqlMapConfig>

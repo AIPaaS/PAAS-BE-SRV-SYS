@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_OP">
+
+
+	<select id="selectListByOrg" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_OP.sql_query_columns" />
+		from SYS_OP where id in (select OP_ID from SYS_OP_ORG where DATA_STATUS=1 and ORG_ID=#orgId:BIGINT#
+						<isNotEmpty prepend="and" property="directFlag" >
+							DIRECT_FLAG = #directFlag:INTEGER#
+						</isNotEmpty>
+						<isNotEmpty prepend="and" property="adminFlag" >
+							ADMIN_FLAG = #adminFlag:INTEGER#
+						</isNotEmpty>
+					)
+			<include refid="SYS_OP.sql_query_where"/>
+		order by 
+			<isNotEmpty property="orders" >
+				$orders$
+			</isNotEmpty>
+			<isEmpty property="orders" >
+				ID
+			</isEmpty>
+	</select>
+	
+
+
+
+</sqlMap>

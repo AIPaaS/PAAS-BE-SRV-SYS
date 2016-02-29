@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_ORG">
+
+
+	<resultMap class="com.aic.paas.sys.provider.bean.SysOrg" id="queryResult">
+		<result column="ID" jdbcType="BIGINT" property="id"/>	<!-- ID -->
+		<result column="ORG_CODE" jdbcType="VARCHAR" property="orgCode"/>	<!-- 组织代码 -->
+		<result column="ORG_NAME" jdbcType="VARCHAR" property="orgName"/>	<!-- 组织名称 -->
+		<result column="ORG_TYPE_ID" jdbcType="BIGINT" property="orgTypeId"/>	<!-- 组织类型 -->
+		<result column="PARENT_ORG_ID" jdbcType="BIGINT" property="parentOrgId"/>	<!-- 上级组织ID -->
+		<result column="ORG_LEVEL" jdbcType="INTEGER" property="orgLevel"/>	<!-- 组织级别 -->
+		<result column="ORG_LVL_PATH" jdbcType="VARCHAR" property="orgLvlPath"/>	<!-- 组织层级路径 -->
+		<result column="IS_LEAF" jdbcType="INTEGER" property="isLeaf"/>	<!-- 是否末级 -->
+		<result column="AUTH_ORG_ID" jdbcType="BIGINT" property="authOrgId"/>	<!-- 权限组织ID -->
+		<result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName"/>	<!-- 简称 -->
+		<result column="ENGLISH_NAME" jdbcType="VARCHAR" property="englishName"/>	<!-- 英文名 -->
+		<result column="DISTRICT_ID" jdbcType="VARCHAR" property="districtId"/>	<!-- 地区编码 -->
+		<result column="MEMBER_NUM" jdbcType="INTEGER" property="memberNum"/>	<!-- 人数 -->
+		<result column="MANAGER_NAME" jdbcType="VARCHAR" property="managerName"/>	<!-- 负责人名称 -->
+		<result column="EMAIL" jdbcType="VARCHAR" property="email"/>	<!-- 电子邮件地址 -->
+		<result column="PHONE" jdbcType="VARCHAR" property="phone"/>	<!-- 联系电话 -->
+		<result column="FAX" jdbcType="VARCHAR" property="fax"/>	<!-- 传真号 -->
+		<result column="ORG_ADDRESS" jdbcType="VARCHAR" property="orgAddress"/>	<!-- 组织地址 -->
+		<result column="CONTACT_NAME" jdbcType="VARCHAR" property="contactName"/>	<!-- 联系人姓名 -->
+		<result column="CONTACT_CARD_TYPE" jdbcType="INTEGER" property="contactCardType"/>	<!-- 联人证类型 -->
+		<result column="CONTACT_CARD_CODE" jdbcType="VARCHAR" property="contactCardCode"/>	<!-- 联系人证件号码 -->
+		<result column="CONTACT_MOBILE" jdbcType="VARCHAR" property="contactMobile"/>	<!-- 联系人手机 -->
+		<result column="NATIONALITY_ID" jdbcType="BIGINT" property="nationalityId"/>	<!-- 国家ID -->
+		<result column="PROVINCE_ID" jdbcType="BIGINT" property="provinceId"/>	<!-- 省份ID -->
+		<result column="CITY_ID" jdbcType="BIGINT" property="cityId"/>	<!-- 地市ID -->
+		<result column="COUNTY_ID" jdbcType="BIGINT" property="countyId"/>	<!-- 区县ID -->
+		<result column="POSTAL_CODE" jdbcType="INTEGER" property="postalCode"/>	<!-- 邮政编码 -->
+		<result column="REMARK" jdbcType="VARCHAR" property="remark"/>	<!-- 备注 -->
+		<result column="CUSTOM_1" jdbcType="VARCHAR" property="custom1"/>	<!-- 备用_1 -->
+		<result column="CUSTOM_2" jdbcType="VARCHAR" property="custom2"/>	<!-- 备用_2 -->
+		<result column="CUSTOM_3" jdbcType="VARCHAR" property="custom3"/>	<!-- 备用_3 -->
+		<result column="CUSTOM_4" jdbcType="BIGINT" property="custom4"/>	<!-- 备用_4 -->
+		<result column="CUSTOM_5" jdbcType="BIGINT" property="custom5"/>	<!-- 备用_5 -->
+		<result column="CUSTOM_6" jdbcType="BIGINT" property="custom6"/>	<!-- 备用_6 -->
+		<result column="STATUS" jdbcType="INTEGER" property="status"/>	<!-- 状态 -->
+		<result column="DATA_STATUS" jdbcType="INTEGER" property="dataStatus"/>	<!-- 数据状态 -->
+		<result column="CREATOR" jdbcType="VARCHAR" property="creator"/>	<!-- 创建人 -->
+		<result column="MODIFIER" jdbcType="VARCHAR" property="modifier"/>	<!-- 修改人 -->
+		<result column="CREATE_TIME" jdbcType="BIGINT" property="createTime"/>	<!-- 创建时间 -->
+		<result column="MODIFY_TIME" jdbcType="BIGINT" property="modifyTime"/>	<!-- 修改时间 -->
+	</resultMap>
+	
+
+	<sql id="sql_query_where">
+		<isNotEmpty prepend="and" property="cdt.id" >
+			ID = #cdt.id:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="ids" >
+			ID in ($ids$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startId" >
+			<![CDATA[ ID >= #cdt.startId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endId" >
+			<![CDATA[ ID <= #cdt.endId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgCode" >
+			ORG_CODE like #cdt.orgCode:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgCodeEqual" >
+			ORG_CODE = #cdt.orgCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="orgCodes" >
+			ORG_CODE in ($orgCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgName" >
+			ORG_NAME like #cdt.orgName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgTypeId" >
+			ORG_TYPE_ID = #cdt.orgTypeId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="orgTypeIds" >
+			ORG_TYPE_ID in ($orgTypeIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startOrgTypeId" >
+			<![CDATA[ ORG_TYPE_ID >= #cdt.startOrgTypeId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endOrgTypeId" >
+			<![CDATA[ ORG_TYPE_ID <= #cdt.endOrgTypeId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.parentOrgId" >
+			PARENT_ORG_ID = #cdt.parentOrgId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="parentOrgIds" >
+			PARENT_ORG_ID in ($parentOrgIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startParentOrgId" >
+			<![CDATA[ PARENT_ORG_ID >= #cdt.startParentOrgId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endParentOrgId" >
+			<![CDATA[ PARENT_ORG_ID <= #cdt.endParentOrgId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgLevel" >
+			ORG_LEVEL = #cdt.orgLevel:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="orgLevels" >
+			ORG_LEVEL in ($orgLevels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startOrgLevel" >
+			<![CDATA[ ORG_LEVEL >= #cdt.startOrgLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endOrgLevel" >
+			<![CDATA[ ORG_LEVEL <= #cdt.endOrgLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgLvlPath" >
+			ORG_LVL_PATH like #cdt.orgLvlPath:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.isLeaf" >
+			IS_LEAF = #cdt.isLeaf:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="isLeafs" >
+			IS_LEAF in ($isLeafs$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startIsLeaf" >
+			<![CDATA[ IS_LEAF >= #cdt.startIsLeaf:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endIsLeaf" >
+			<![CDATA[ IS_LEAF <= #cdt.endIsLeaf:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.authOrgId" >
+			AUTH_ORG_ID = #cdt.authOrgId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="authOrgIds" >
+			AUTH_ORG_ID in ($authOrgIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startAuthOrgId" >
+			<![CDATA[ AUTH_ORG_ID >= #cdt.startAuthOrgId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endAuthOrgId" >
+			<![CDATA[ AUTH_ORG_ID <= #cdt.endAuthOrgId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.shortName" >
+			SHORT_NAME like #cdt.shortName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.englishName" >
+			ENGLISH_NAME like #cdt.englishName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.districtId" >
+			DISTRICT_ID like #cdt.districtId:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.districtIdEqual" >
+			DISTRICT_ID = #cdt.districtIdEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="districtIds" >
+			DISTRICT_ID in ($districtIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.memberNum" >
+			MEMBER_NUM = #cdt.memberNum:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="memberNums" >
+			MEMBER_NUM in ($memberNums$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startMemberNum" >
+			<![CDATA[ MEMBER_NUM >= #cdt.startMemberNum:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endMemberNum" >
+			<![CDATA[ MEMBER_NUM <= #cdt.endMemberNum:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.managerName" >
+			MANAGER_NAME like #cdt.managerName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.managerNameEqual" >
+			MANAGER_NAME = #cdt.managerNameEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="managerNames" >
+			MANAGER_NAME in ($managerNames$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.email" >
+			EMAIL like #cdt.email:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.emailEqual" >
+			EMAIL = #cdt.emailEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="emails" >
+			EMAIL in ($emails$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.phone" >
+			PHONE like #cdt.phone:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.phoneEqual" >
+			PHONE = #cdt.phoneEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="phones" >
+			PHONE in ($phones$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.fax" >
+			FAX like #cdt.fax:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.faxEqual" >
+			FAX = #cdt.faxEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="faxs" >
+			FAX in ($faxs$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.orgAddress" >
+			ORG_ADDRESS like #cdt.orgAddress:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactName" >
+			CONTACT_NAME like #cdt.contactName:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactNameEqual" >
+			CONTACT_NAME = #cdt.contactNameEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactNames" >
+			CONTACT_NAME in ($contactNames$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactCardType" >
+			CONTACT_CARD_TYPE = #cdt.contactCardType:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactCardTypes" >
+			CONTACT_CARD_TYPE in ($contactCardTypes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startContactCardType" >
+			<![CDATA[ CONTACT_CARD_TYPE >= #cdt.startContactCardType:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endContactCardType" >
+			<![CDATA[ CONTACT_CARD_TYPE <= #cdt.endContactCardType:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactCardCode" >
+			CONTACT_CARD_CODE like #cdt.contactCardCode:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactCardCodeEqual" >
+			CONTACT_CARD_CODE = #cdt.contactCardCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactCardCodes" >
+			CONTACT_CARD_CODE in ($contactCardCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactMobile" >
+			CONTACT_MOBILE like #cdt.contactMobile:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactMobileEqual" >
+			CONTACT_MOBILE = #cdt.contactMobileEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="contactMobiles" >
+			CONTACT_MOBILE in ($contactMobiles$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.nationalityId" >
+			NATIONALITY_ID = #cdt.nationalityId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="nationalityIds" >
+			NATIONALITY_ID in ($nationalityIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startNationalityId" >
+			<![CDATA[ NATIONALITY_ID >= #cdt.startNationalityId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endNationalityId" >
+			<![CDATA[ NATIONALITY_ID <= #cdt.endNationalityId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.provinceId" >
+			PROVINCE_ID = #cdt.provinceId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="provinceIds" >
+			PROVINCE_ID in ($provinceIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startProvinceId" >
+			<![CDATA[ PROVINCE_ID >= #cdt.startProvinceId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endProvinceId" >
+			<![CDATA[ PROVINCE_ID <= #cdt.endProvinceId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.cityId" >
+			CITY_ID = #cdt.cityId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cityIds" >
+			CITY_ID in ($cityIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCityId" >
+			<![CDATA[ CITY_ID >= #cdt.startCityId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCityId" >
+			<![CDATA[ CITY_ID <= #cdt.endCityId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.countyId" >
+			COUNTY_ID = #cdt.countyId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="countyIds" >
+			COUNTY_ID in ($countyIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCountyId" >
+			<![CDATA[ COUNTY_ID >= #cdt.startCountyId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCountyId" >
+			<![CDATA[ COUNTY_ID <= #cdt.endCountyId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.postalCode" >
+			POSTAL_CODE = #cdt.postalCode:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="postalCodes" >
+			POSTAL_CODE in ($postalCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startPostalCode" >
+			<![CDATA[ POSTAL_CODE >= #cdt.startPostalCode:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endPostalCode" >
+			<![CDATA[ POSTAL_CODE <= #cdt.endPostalCode:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.remark" >
+			REMARK like #cdt.remark:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom1" >
+			CUSTOM_1 like #cdt.custom1:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom2" >
+			CUSTOM_2 like #cdt.custom2:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom3" >
+			CUSTOM_3 like #cdt.custom3:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom4" >
+			CUSTOM_4 = #cdt.custom4:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom4s" >
+			CUSTOM_4 in ($custom4s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom4" >
+			<![CDATA[ CUSTOM_4 >= #cdt.startCustom4:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom4" >
+			<![CDATA[ CUSTOM_4 <= #cdt.endCustom4:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom5" >
+			CUSTOM_5 = #cdt.custom5:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom5s" >
+			CUSTOM_5 in ($custom5s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom5" >
+			<![CDATA[ CUSTOM_5 >= #cdt.startCustom5:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom5" >
+			<![CDATA[ CUSTOM_5 <= #cdt.endCustom5:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom6" >
+			CUSTOM_6 = #cdt.custom6:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom6s" >
+			CUSTOM_6 in ($custom6s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom6" >
+			<![CDATA[ CUSTOM_6 >= #cdt.startCustom6:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom6" >
+			<![CDATA[ CUSTOM_6 <= #cdt.endCustom6:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.status" >
+			STATUS = #cdt.status:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="statuss" >
+			STATUS in ($statuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startStatus" >
+			<![CDATA[ STATUS >= #cdt.startStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endStatus" >
+			<![CDATA[ STATUS <= #cdt.endStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.dataStatus" >
+			DATA_STATUS = #cdt.dataStatus:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="dataStatuss" >
+			DATA_STATUS in ($dataStatuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startDataStatus" >
+			<![CDATA[ DATA_STATUS >= #cdt.startDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endDataStatus" >
+			<![CDATA[ DATA_STATUS <= #cdt.endDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creator" >
+			CREATOR like #cdt.creator:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creatorEqual" >
+			CREATOR = #cdt.creatorEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="creators" >
+			CREATOR in ($creators$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifier" >
+			MODIFIER like #cdt.modifier:VARCHAR# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifierEqual" >
+			MODIFIER = #cdt.modifierEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifiers" >
+			MODIFIER in ($modifiers$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.createTime" >
+			CREATE_TIME = #cdt.createTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="createTimes" >
+			CREATE_TIME in ($createTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCreateTime" >
+			<![CDATA[ CREATE_TIME >= #cdt.startCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCreateTime" >
+			<![CDATA[ CREATE_TIME <= #cdt.endCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifyTime" >
+			MODIFY_TIME = #cdt.modifyTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifyTimes" >
+			MODIFY_TIME in ($modifyTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModifyTime" >
+			<![CDATA[ MODIFY_TIME >= #cdt.startModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModifyTime" >
+			<![CDATA[ MODIFY_TIME <= #cdt.endModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+	</sql>
+	
+
+	<sql id="sql_update_columns">
+		<isNotNull prepend="," property="record.id"> 
+			ID = #record.id:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orgCode"> 
+			ORG_CODE = #record.orgCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orgName"> 
+			ORG_NAME = #record.orgName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orgTypeId"> 
+			ORG_TYPE_ID = #record.orgTypeId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.parentOrgId"> 
+			PARENT_ORG_ID = #record.parentOrgId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orgLevel"> 
+			ORG_LEVEL = #record.orgLevel:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orgLvlPath"> 
+			ORG_LVL_PATH = #record.orgLvlPath:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.isLeaf"> 
+			IS_LEAF = #record.isLeaf:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.authOrgId"> 
+			AUTH_ORG_ID = #record.authOrgId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.shortName"> 
+			SHORT_NAME = #record.shortName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.englishName"> 
+			ENGLISH_NAME = #record.englishName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.districtId"> 
+			DISTRICT_ID = #record.districtId:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.memberNum"> 
+			MEMBER_NUM = #record.memberNum:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.managerName"> 
+			MANAGER_NAME = #record.managerName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.email"> 
+			EMAIL = #record.email:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.phone"> 
+			PHONE = #record.phone:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.fax"> 
+			FAX = #record.fax:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.orgAddress"> 
+			ORG_ADDRESS = #record.orgAddress:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactName"> 
+			CONTACT_NAME = #record.contactName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactCardType"> 
+			CONTACT_CARD_TYPE = #record.contactCardType:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactCardCode"> 
+			CONTACT_CARD_CODE = #record.contactCardCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactMobile"> 
+			CONTACT_MOBILE = #record.contactMobile:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.nationalityId"> 
+			NATIONALITY_ID = #record.nationalityId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.provinceId"> 
+			PROVINCE_ID = #record.provinceId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.cityId"> 
+			CITY_ID = #record.cityId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.countyId"> 
+			COUNTY_ID = #record.countyId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.postalCode"> 
+			POSTAL_CODE = #record.postalCode:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.remark"> 
+			REMARK = #record.remark:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom1"> 
+			CUSTOM_1 = #record.custom1:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom2"> 
+			CUSTOM_2 = #record.custom2:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom3"> 
+			CUSTOM_3 = #record.custom3:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom4"> 
+			CUSTOM_4 = #record.custom4:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom5"> 
+			CUSTOM_5 = #record.custom5:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom6"> 
+			CUSTOM_6 = #record.custom6:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.status"> 
+			STATUS = #record.status:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.dataStatus"> 
+			DATA_STATUS = #record.dataStatus:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.creator"> 
+			CREATOR = #record.creator:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifier"> 
+			MODIFIER = #record.modifier:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.createTime"> 
+			CREATE_TIME = #record.createTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifyTime"> 
+			MODIFY_TIME = #record.modifyTime:BIGINT#
+		</isNotNull>
+	</sql>
+	
+
+	<sql id="sql_query_columns">
+		ID, ORG_CODE, ORG_NAME, ORG_TYPE_ID, PARENT_ORG_ID, ORG_LEVEL, 
+		ORG_LVL_PATH, IS_LEAF, AUTH_ORG_ID, SHORT_NAME, ENGLISH_NAME, DISTRICT_ID, 
+		MEMBER_NUM, MANAGER_NAME, EMAIL, PHONE, FAX, ORG_ADDRESS, 
+		CONTACT_NAME, CONTACT_CARD_TYPE, CONTACT_CARD_CODE, CONTACT_MOBILE, NATIONALITY_ID, PROVINCE_ID, 
+		CITY_ID, COUNTY_ID, POSTAL_CODE, REMARK, CUSTOM_1, CUSTOM_2, 
+		CUSTOM_3, CUSTOM_4, CUSTOM_5, CUSTOM_6, STATUS, DATA_STATUS, 
+		CREATOR, MODIFIER, CREATE_TIME, MODIFY_TIME
+	</sql>
+	
+
+	
+
+	<select id="selectList" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_ORG.sql_query_columns" />
+		from SYS_ORG 
+			<dynamic prepend="where" >
+				<include refid="SYS_ORG.sql_query_where"/>
+			</dynamic>
+		order by 
+			<isNotEmpty property="orders" >
+				$orders$
+			</isNotEmpty>
+			<isEmpty property="orders" >
+				ID
+			</isEmpty>
+	</select>
+	<select id="selectCount" parameterClass="java.util.Map" resultClass="java.lang.Long">
+		select count(1) from SYS_ORG 
+			<dynamic prepend="where" >
+				<include refid="SYS_ORG.sql_query_where"/>
+			</dynamic>
+	</select>
+	<select id="selectById" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_ORG.sql_query_columns" />
+		from SYS_ORG where ID=#id:BIGINT# and DATA_STATUS=1  
+	</select>
+	
+
+	
+
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into SYS_ORG(
+			ID, ORG_CODE, ORG_NAME, ORG_TYPE_ID, PARENT_ORG_ID, 
+			ORG_LEVEL, ORG_LVL_PATH, IS_LEAF, AUTH_ORG_ID, SHORT_NAME, 
+			ENGLISH_NAME, DISTRICT_ID, MEMBER_NUM, MANAGER_NAME, EMAIL, 
+			PHONE, FAX, ORG_ADDRESS, CONTACT_NAME, CONTACT_CARD_TYPE, 
+			CONTACT_CARD_CODE, CONTACT_MOBILE, NATIONALITY_ID, PROVINCE_ID, CITY_ID, 
+			COUNTY_ID, POSTAL_CODE, REMARK, CUSTOM_1, CUSTOM_2, 
+			CUSTOM_3, CUSTOM_4, CUSTOM_5, CUSTOM_6, STATUS, 
+			DATA_STATUS, CREATOR, MODIFIER, CREATE_TIME, MODIFY_TIME)
+		values (
+			#record.id:BIGINT#, #record.orgCode:VARCHAR#, #record.orgName:VARCHAR#, #record.orgTypeId:BIGINT#, #record.parentOrgId:BIGINT#, 
+			#record.orgLevel:INTEGER#, #record.orgLvlPath:VARCHAR#, #record.isLeaf:INTEGER#, #record.authOrgId:BIGINT#, #record.shortName:VARCHAR#, 
+			#record.englishName:VARCHAR#, #record.districtId:VARCHAR#, #record.memberNum:INTEGER#, #record.managerName:VARCHAR#, #record.email:VARCHAR#, 
+			#record.phone:VARCHAR#, #record.fax:VARCHAR#, #record.orgAddress:VARCHAR#, #record.contactName:VARCHAR#, #record.contactCardType:INTEGER#, 
+			#record.contactCardCode:VARCHAR#, #record.contactMobile:VARCHAR#, #record.nationalityId:BIGINT#, #record.provinceId:BIGINT#, #record.cityId:BIGINT#, 
+			#record.countyId:BIGINT#, #record.postalCode:INTEGER#, #record.remark:VARCHAR#, #record.custom1:VARCHAR#, #record.custom2:VARCHAR#, 
+			#record.custom3:VARCHAR#, #record.custom4:BIGINT#, #record.custom5:BIGINT#, #record.custom6:BIGINT#, #record.status:INTEGER#, 
+			#record.dataStatus:INTEGER#, #record.creator:VARCHAR#, #record.modifier:VARCHAR#, #record.createTime:BIGINT#, #record.modifyTime:BIGINT#)
+	</insert>
+	
+
+	
+
+	<update id="updateById" parameterClass="java.util.Map">
+		update SYS_ORG
+			<dynamic prepend="set" > 
+				<include refid="SYS_ORG.sql_update_columns"/> 
+			</dynamic>
+		where ID = #id:BIGINT#
+	</update>
+	<update id="updateByCdt" parameterClass="java.util.Map">
+		update SYS_ORG
+			<dynamic prepend="set" > 
+				<include refid="SYS_ORG.sql_update_columns"/> 
+			</dynamic>
+			<dynamic prepend="where" > 
+				<include refid="SYS_ORG.sql_query_where"/> 
+			</dynamic>
+	</update>
+	
+	
+
+	
+
+	<delete id="deleteById" parameterClass="java.util.Map">
+		delete from SYS_ORG where ID = #id:BIGINT#
+	</delete>
+	<delete id="deleteByCdt" parameterClass="java.util.Map">
+		delete from SYS_ORG
+			<dynamic prepend="where" > 
+				<include refid="SYS_ORG.sql_query_where"/> 
+			</dynamic>
+	</delete>
+	
+
+
+
+</sqlMap>

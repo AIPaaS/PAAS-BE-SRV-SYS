@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_OP">
+
+
+	<resultMap class="com.aic.paas.sys.provider.bean.SysOp" id="queryResult">
+		<result column="ID" jdbcType="BIGINT" property="id"/>	<!-- ID -->
+		<result column="OP_CODE" jdbcType="VARCHAR" property="opCode"/>	<!-- 操作员编码 -->
+		<result column="OP_NAME" jdbcType="VARCHAR" property="opName"/>	<!-- 操作员姓名 -->
+		<result column="OP_KIND" jdbcType="INTEGER" property="opKind"/>	<!-- 操作员类别 -->
+		<result column="MOBILE_NO" jdbcType="VARCHAR" property="mobileNo"/>	<!-- 手机号 -->
+		<result column="EMAIL_ADRESS" jdbcType="VARCHAR" property="emailAdress"/>	<!-- 电子邮件地址 -->
+		<result column="OP_LEVEL" jdbcType="INTEGER" property="opLevel"/>	<!-- 操作员级别 -->
+		<result column="SUP_OP_ID" jdbcType="BIGINT" property="supOpId"/>	<!-- 上级操作员ID -->
+		<result column="LOGIN_CODE" jdbcType="VARCHAR" property="loginCode"/>	<!-- 登录工号 -->
+		<result column="LOGIN_PASSWD" jdbcType="VARCHAR" property="loginPasswd"/>	<!-- 登录密码 -->
+		<result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName"/>	<!-- 简称 -->
+		<result column="ENGLISH_NAME" jdbcType="VARCHAR" property="englishName"/>	<!-- 英文名 -->
+		<result column="CARD_TYPE_ID" jdbcType="INTEGER" property="cardTypeId"/>	<!-- 证件类型 -->
+		<result column="CARD_NO" jdbcType="VARCHAR" property="cardNo"/>	<!-- 证件号码 -->
+		<result column="BIRTHDAY" jdbcType="INTEGER" property="birthday"/>	<!-- 生日 -->
+		<result column="MARRY_STATUS" jdbcType="INTEGER" property="marryStatus"/>	<!-- 婚姻状况 -->
+		<result column="GENDER" jdbcType="INTEGER" property="gender"/>	<!-- 性别 -->
+		<result column="RELIGION" jdbcType="INTEGER" property="religion"/>	<!-- 宗教信仰 -->
+		<result column="NATIONAL_TYPE" jdbcType="INTEGER" property="nationalType"/>	<!-- 民族 -->
+		<result column="EDUCATION_LEVEL" jdbcType="INTEGER" property="educationLevel"/>	<!-- 学历 -->
+		<result column="INCOME_LEVEL" jdbcType="BIGINT" property="incomeLevel"/>	<!-- 收入 -->
+		<result column="POLITICS_FACE" jdbcType="INTEGER" property="politicsFace"/>	<!-- 政治面貌 -->
+		<result column="OFFICE_TEL" jdbcType="VARCHAR" property="officeTel"/>	<!-- 办公电话 -->
+		<result column="FAX_ID" jdbcType="VARCHAR" property="faxId"/>	<!-- 传真号 -->
+		<result column="HOME_TEL" jdbcType="VARCHAR" property="homeTel"/>	<!-- 家庭电话 -->
+		<result column="WIRELESS_CALL" jdbcType="VARCHAR" property="wirelessCall"/>	<!-- 无限寻呼 -->
+		<result column="ALARM_MOBILE_NO" jdbcType="VARCHAR" property="alarmMobileNo"/>	<!-- 告警手机号 -->
+		<result column="FAMILY_INFO" jdbcType="VARCHAR" property="familyInfo"/>	<!-- 亲属信息 -->
+		<result column="CONTACT_ADDRESS" jdbcType="VARCHAR" property="contactAddress"/>	<!-- 联系地址 -->
+		<result column="POSTAL_CODE" jdbcType="INTEGER" property="postalCode"/>	<!-- 邮政编码 -->
+		<result column="SECURITY_ID" jdbcType="VARCHAR" property="securityId"/>	<!-- 社保卡号 -->
+		<result column="CAR_NO" jdbcType="VARCHAR" property="carNo"/>	<!-- 车牌号码 -->
+		<result column="CHARACTER_DESC" jdbcType="VARCHAR" property="characterDesc"/>	<!-- 性格特点 -->
+		<result column="NOTES" jdbcType="VARCHAR" property="notes"/>	<!-- 备注 -->
+		<result column="RECENT_PASSWORD" jdbcType="VARCHAR" property="recentPassword"/>	<!-- 最近使用密码 -->
+		<result column="RECENT_PASS_TIMES" jdbcType="INTEGER" property="recentPassTimes"/>	<!-- 最近使用密码次数 -->
+		<result column="MIN_PASSWD_LENGTH" jdbcType="INTEGER" property="minPasswdLength"/>	<!-- 最小密码长度 -->
+		<result column="ALLOW_CHANGE_PASSWD" jdbcType="INTEGER" property="allowChangePasswd"/>	<!-- 是否允许修改密码 -->
+		<result column="ACCT_EFFECT_DATE" jdbcType="BIGINT" property="acctEffectDate"/>	<!-- 账号生效日期 -->
+		<result column="ACCT_EXPIRE_DATE" jdbcType="BIGINT" property="acctExpireDate"/>	<!-- 账号失效日期 -->
+		<result column="MULTI_LOGIN_FLAG" jdbcType="INTEGER" property="multiLoginFlag"/>	<!-- 多重登录标志 -->
+		<result column="LAST_LOGIN_LOG_ID" jdbcType="BIGINT" property="lastLoginLogId"/>	<!-- 最后一次登录日志 -->
+		<result column="TRY_TIMES" jdbcType="INTEGER" property="tryTimes"/>	<!-- 登录尝试次数 -->
+		<result column="LOGIN_FLAG" jdbcType="INTEGER" property="loginFlag"/>	<!-- 登录标志 -->
+		<result column="SUPER_USER_FLAG" jdbcType="INTEGER" property="superUserFlag"/>	<!-- 超级用户标志 -->
+		<result column="PASSWD_VALID_DAYS" jdbcType="BIGINT" property="passwdValidDays"/>	<!-- 密码有效期 -->
+		<result column="CANCEL_DAYS" jdbcType="INTEGER" property="cancelDays"/>	<!-- 停止时限 -->
+		<result column="PASSWORD_VALID_DATE" jdbcType="BIGINT" property="passwordValidDate"/>	<!-- 密码生效时间 -->
+		<result column="CHG_PASSWD_ALARM_DAYS" jdbcType="BIGINT" property="chgPasswdAlarmDays"/>	<!-- 密码过期提前通知 -->
+		<result column="SMS_CHK_PASSWD" jdbcType="VARCHAR" property="smsChkPasswd"/>	<!-- 短信校验密码 -->
+		<result column="CHKPW_EFFECT_TIME" jdbcType="BIGINT" property="chkpwEffectTime"/>	<!-- 校验密码生效时间 -->
+		<result column="CHKPW_EXPIRE_TIME" jdbcType="BIGINT" property="chkpwExpireTime"/>	<!-- 校验密码失效时间 -->
+		<result column="LOCK_FLAG" jdbcType="INTEGER" property="lockFlag"/>	<!-- 锁定标志 -->
+		<result column="IS_UPDATE_PWD" jdbcType="INTEGER" property="isUpdatePwd"/>	<!-- 是否需要修改密码 -->
+		<result column="LOGIN_AUTH_CODE" jdbcType="VARCHAR" property="loginAuthCode"/>	<!-- 登录认证代码 -->
+		<result column="CUSTOM_1" jdbcType="VARCHAR" property="custom1"/>	<!-- 备用_1 -->
+		<result column="CUSTOM_2" jdbcType="VARCHAR" property="custom2"/>	<!-- 备用_2 -->
+		<result column="CUSTOM_3" jdbcType="VARCHAR" property="custom3"/>	<!-- 备用_3 -->
+		<result column="CUSTOM_4" jdbcType="BIGINT" property="custom4"/>	<!-- 备用_4 -->
+		<result column="CUSTOM_5" jdbcType="BIGINT" property="custom5"/>	<!-- 备用_5 -->
+		<result column="CUSTOM_6" jdbcType="BIGINT" property="custom6"/>	<!-- 备用_6 -->
+		<result column="STATUS" jdbcType="INTEGER" property="status"/>	<!-- 状态 -->
+		<result column="DATA_STATUS" jdbcType="INTEGER" property="dataStatus"/>	<!-- 数据状态 -->
+		<result column="CREATOR" jdbcType="VARCHAR" property="creator"/>	<!-- 创建人 -->
+		<result column="MODIFIER" jdbcType="VARCHAR" property="modifier"/>	<!-- 修改人 -->
+		<result column="CREATE_TIME" jdbcType="BIGINT" property="createTime"/>	<!-- 创建时间 -->
+		<result column="MODIFY_TIME" jdbcType="BIGINT" property="modifyTime"/>	<!-- 修改时间 -->
+	</resultMap>
+	
+
+	<sql id="sql_query_where">
+		<isNotEmpty prepend="and" property="cdt.id" >
+			ID = #cdt.id:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="ids" >
+			ID in ($ids$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startId" >
+			<![CDATA[ ID >= #cdt.startId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endId" >
+			<![CDATA[ ID <= #cdt.endId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.opCode" >
+			OP_CODE like #cdt.opCode:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.opCodeEqual" >
+			OP_CODE = #cdt.opCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="opCodes" >
+			OP_CODE in ($opCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.opName" >
+			OP_NAME like #cdt.opName:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.opKind" >
+			OP_KIND = #cdt.opKind:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="opKinds" >
+			OP_KIND in ($opKinds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startOpKind" >
+			<![CDATA[ OP_KIND >= #cdt.startOpKind:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endOpKind" >
+			<![CDATA[ OP_KIND <= #cdt.endOpKind:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mobileNo" >
+			MOBILE_NO like #cdt.mobileNo:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.mobileNoEqual" >
+			MOBILE_NO = #cdt.mobileNoEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="mobileNos" >
+			MOBILE_NO in ($mobileNos$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.emailAdress" >
+			EMAIL_ADRESS like #cdt.emailAdress:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.emailAdressEqual" >
+			EMAIL_ADRESS = #cdt.emailAdressEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="emailAdresss" >
+			EMAIL_ADRESS in ($emailAdresss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.opLevel" >
+			OP_LEVEL = #cdt.opLevel:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="opLevels" >
+			OP_LEVEL in ($opLevels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startOpLevel" >
+			<![CDATA[ OP_LEVEL >= #cdt.startOpLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endOpLevel" >
+			<![CDATA[ OP_LEVEL <= #cdt.endOpLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.supOpId" >
+			SUP_OP_ID = #cdt.supOpId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="supOpIds" >
+			SUP_OP_ID in ($supOpIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startSupOpId" >
+			<![CDATA[ SUP_OP_ID >= #cdt.startSupOpId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endSupOpId" >
+			<![CDATA[ SUP_OP_ID <= #cdt.endSupOpId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.loginCode" >
+			LOGIN_CODE like #cdt.loginCode:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.loginCodeEqual" >
+			LOGIN_CODE = #cdt.loginCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="loginCodes" >
+			LOGIN_CODE in ($loginCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.loginPasswd" >
+			LOGIN_PASSWD like #cdt.loginPasswd:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.shortName" >
+			SHORT_NAME like #cdt.shortName:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.englishName" >
+			ENGLISH_NAME like #cdt.englishName:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.cardTypeId" >
+			CARD_TYPE_ID = #cdt.cardTypeId:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cardTypeIds" >
+			CARD_TYPE_ID in ($cardTypeIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCardTypeId" >
+			<![CDATA[ CARD_TYPE_ID >= #cdt.startCardTypeId:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCardTypeId" >
+			<![CDATA[ CARD_TYPE_ID <= #cdt.endCardTypeId:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.cardNo" >
+			CARD_NO like #cdt.cardNo:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.cardNoEqual" >
+			CARD_NO = #cdt.cardNoEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cardNos" >
+			CARD_NO in ($cardNos$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.birthday" >
+			BIRTHDAY = #cdt.birthday:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="birthdays" >
+			BIRTHDAY in ($birthdays$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startBirthday" >
+			<![CDATA[ BIRTHDAY >= #cdt.startBirthday:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endBirthday" >
+			<![CDATA[ BIRTHDAY <= #cdt.endBirthday:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.marryStatus" >
+			MARRY_STATUS = #cdt.marryStatus:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="marryStatuss" >
+			MARRY_STATUS in ($marryStatuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startMarryStatus" >
+			<![CDATA[ MARRY_STATUS >= #cdt.startMarryStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endMarryStatus" >
+			<![CDATA[ MARRY_STATUS <= #cdt.endMarryStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.gender" >
+			GENDER = #cdt.gender:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="genders" >
+			GENDER in ($genders$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startGender" >
+			<![CDATA[ GENDER >= #cdt.startGender:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endGender" >
+			<![CDATA[ GENDER <= #cdt.endGender:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.religion" >
+			RELIGION = #cdt.religion:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="religions" >
+			RELIGION in ($religions$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startReligion" >
+			<![CDATA[ RELIGION >= #cdt.startReligion:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endReligion" >
+			<![CDATA[ RELIGION <= #cdt.endReligion:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.nationalType" >
+			NATIONAL_TYPE = #cdt.nationalType:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="nationalTypes" >
+			NATIONAL_TYPE in ($nationalTypes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startNationalType" >
+			<![CDATA[ NATIONAL_TYPE >= #cdt.startNationalType:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endNationalType" >
+			<![CDATA[ NATIONAL_TYPE <= #cdt.endNationalType:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.educationLevel" >
+			EDUCATION_LEVEL = #cdt.educationLevel:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="educationLevels" >
+			EDUCATION_LEVEL in ($educationLevels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startEducationLevel" >
+			<![CDATA[ EDUCATION_LEVEL >= #cdt.startEducationLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endEducationLevel" >
+			<![CDATA[ EDUCATION_LEVEL <= #cdt.endEducationLevel:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.incomeLevel" >
+			INCOME_LEVEL = #cdt.incomeLevel:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="incomeLevels" >
+			INCOME_LEVEL in ($incomeLevels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startIncomeLevel" >
+			<![CDATA[ INCOME_LEVEL >= #cdt.startIncomeLevel:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endIncomeLevel" >
+			<![CDATA[ INCOME_LEVEL <= #cdt.endIncomeLevel:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.politicsFace" >
+			POLITICS_FACE = #cdt.politicsFace:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="politicsFaces" >
+			POLITICS_FACE in ($politicsFaces$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startPoliticsFace" >
+			<![CDATA[ POLITICS_FACE >= #cdt.startPoliticsFace:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endPoliticsFace" >
+			<![CDATA[ POLITICS_FACE <= #cdt.endPoliticsFace:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.officeTel" >
+			OFFICE_TEL like #cdt.officeTel:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.officeTelEqual" >
+			OFFICE_TEL = #cdt.officeTelEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="officeTels" >
+			OFFICE_TEL in ($officeTels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.faxId" >
+			FAX_ID like #cdt.faxId:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.faxIdEqual" >
+			FAX_ID = #cdt.faxIdEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="faxIds" >
+			FAX_ID in ($faxIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.homeTel" >
+			HOME_TEL like #cdt.homeTel:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.homeTelEqual" >
+			HOME_TEL = #cdt.homeTelEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="homeTels" >
+			HOME_TEL in ($homeTels$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.wirelessCall" >
+			WIRELESS_CALL like #cdt.wirelessCall:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.wirelessCallEqual" >
+			WIRELESS_CALL = #cdt.wirelessCallEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="wirelessCalls" >
+			WIRELESS_CALL in ($wirelessCalls$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.alarmMobileNo" >
+			ALARM_MOBILE_NO like #cdt.alarmMobileNo:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.alarmMobileNoEqual" >
+			ALARM_MOBILE_NO = #cdt.alarmMobileNoEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="alarmMobileNos" >
+			ALARM_MOBILE_NO in ($alarmMobileNos$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.familyInfo" >
+			FAMILY_INFO like #cdt.familyInfo:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.contactAddress" >
+			CONTACT_ADDRESS like #cdt.contactAddress:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.postalCode" >
+			POSTAL_CODE = #cdt.postalCode:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="postalCodes" >
+			POSTAL_CODE in ($postalCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startPostalCode" >
+			<![CDATA[ POSTAL_CODE >= #cdt.startPostalCode:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endPostalCode" >
+			<![CDATA[ POSTAL_CODE <= #cdt.endPostalCode:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.securityId" >
+			SECURITY_ID like #cdt.securityId:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.securityIdEqual" >
+			SECURITY_ID = #cdt.securityIdEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="securityIds" >
+			SECURITY_ID in ($securityIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.carNo" >
+			CAR_NO like #cdt.carNo:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.carNoEqual" >
+			CAR_NO = #cdt.carNoEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="carNos" >
+			CAR_NO in ($carNos$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.characterDesc" >
+			CHARACTER_DESC like #cdt.characterDesc:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.notes" >
+			NOTES like #cdt.notes:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.recentPassword" >
+			RECENT_PASSWORD like #cdt.recentPassword:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.recentPassTimes" >
+			RECENT_PASS_TIMES = #cdt.recentPassTimes:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="recentPassTimess" >
+			RECENT_PASS_TIMES in ($recentPassTimess$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startRecentPassTimes" >
+			<![CDATA[ RECENT_PASS_TIMES >= #cdt.startRecentPassTimes:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endRecentPassTimes" >
+			<![CDATA[ RECENT_PASS_TIMES <= #cdt.endRecentPassTimes:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.minPasswdLength" >
+			MIN_PASSWD_LENGTH = #cdt.minPasswdLength:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="minPasswdLengths" >
+			MIN_PASSWD_LENGTH in ($minPasswdLengths$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startMinPasswdLength" >
+			<![CDATA[ MIN_PASSWD_LENGTH >= #cdt.startMinPasswdLength:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endMinPasswdLength" >
+			<![CDATA[ MIN_PASSWD_LENGTH <= #cdt.endMinPasswdLength:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.allowChangePasswd" >
+			ALLOW_CHANGE_PASSWD = #cdt.allowChangePasswd:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="allowChangePasswds" >
+			ALLOW_CHANGE_PASSWD in ($allowChangePasswds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startAllowChangePasswd" >
+			<![CDATA[ ALLOW_CHANGE_PASSWD >= #cdt.startAllowChangePasswd:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endAllowChangePasswd" >
+			<![CDATA[ ALLOW_CHANGE_PASSWD <= #cdt.endAllowChangePasswd:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.acctEffectDate" >
+			ACCT_EFFECT_DATE = #cdt.acctEffectDate:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="acctEffectDates" >
+			ACCT_EFFECT_DATE in ($acctEffectDates$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startAcctEffectDate" >
+			<![CDATA[ ACCT_EFFECT_DATE >= #cdt.startAcctEffectDate:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endAcctEffectDate" >
+			<![CDATA[ ACCT_EFFECT_DATE <= #cdt.endAcctEffectDate:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.acctExpireDate" >
+			ACCT_EXPIRE_DATE = #cdt.acctExpireDate:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="acctExpireDates" >
+			ACCT_EXPIRE_DATE in ($acctExpireDates$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startAcctExpireDate" >
+			<![CDATA[ ACCT_EXPIRE_DATE >= #cdt.startAcctExpireDate:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endAcctExpireDate" >
+			<![CDATA[ ACCT_EXPIRE_DATE <= #cdt.endAcctExpireDate:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.multiLoginFlag" >
+			MULTI_LOGIN_FLAG = #cdt.multiLoginFlag:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="multiLoginFlags" >
+			MULTI_LOGIN_FLAG in ($multiLoginFlags$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startMultiLoginFlag" >
+			<![CDATA[ MULTI_LOGIN_FLAG >= #cdt.startMultiLoginFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endMultiLoginFlag" >
+			<![CDATA[ MULTI_LOGIN_FLAG <= #cdt.endMultiLoginFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.lastLoginLogId" >
+			LAST_LOGIN_LOG_ID = #cdt.lastLoginLogId:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="lastLoginLogIds" >
+			LAST_LOGIN_LOG_ID in ($lastLoginLogIds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startLastLoginLogId" >
+			<![CDATA[ LAST_LOGIN_LOG_ID >= #cdt.startLastLoginLogId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endLastLoginLogId" >
+			<![CDATA[ LAST_LOGIN_LOG_ID <= #cdt.endLastLoginLogId:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.tryTimes" >
+			TRY_TIMES = #cdt.tryTimes:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="tryTimess" >
+			TRY_TIMES in ($tryTimess$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startTryTimes" >
+			<![CDATA[ TRY_TIMES >= #cdt.startTryTimes:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endTryTimes" >
+			<![CDATA[ TRY_TIMES <= #cdt.endTryTimes:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.loginFlag" >
+			LOGIN_FLAG = #cdt.loginFlag:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="loginFlags" >
+			LOGIN_FLAG in ($loginFlags$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startLoginFlag" >
+			<![CDATA[ LOGIN_FLAG >= #cdt.startLoginFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endLoginFlag" >
+			<![CDATA[ LOGIN_FLAG <= #cdt.endLoginFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.superUserFlag" >
+			SUPER_USER_FLAG = #cdt.superUserFlag:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="superUserFlags" >
+			SUPER_USER_FLAG in ($superUserFlags$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startSuperUserFlag" >
+			<![CDATA[ SUPER_USER_FLAG >= #cdt.startSuperUserFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endSuperUserFlag" >
+			<![CDATA[ SUPER_USER_FLAG <= #cdt.endSuperUserFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.passwdValidDays" >
+			PASSWD_VALID_DAYS = #cdt.passwdValidDays:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="passwdValidDayss" >
+			PASSWD_VALID_DAYS in ($passwdValidDayss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startPasswdValidDays" >
+			<![CDATA[ PASSWD_VALID_DAYS >= #cdt.startPasswdValidDays:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endPasswdValidDays" >
+			<![CDATA[ PASSWD_VALID_DAYS <= #cdt.endPasswdValidDays:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.cancelDays" >
+			CANCEL_DAYS = #cdt.cancelDays:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cancelDayss" >
+			CANCEL_DAYS in ($cancelDayss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCancelDays" >
+			<![CDATA[ CANCEL_DAYS >= #cdt.startCancelDays:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCancelDays" >
+			<![CDATA[ CANCEL_DAYS <= #cdt.endCancelDays:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.passwordValidDate" >
+			PASSWORD_VALID_DATE = #cdt.passwordValidDate:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="passwordValidDates" >
+			PASSWORD_VALID_DATE in ($passwordValidDates$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startPasswordValidDate" >
+			<![CDATA[ PASSWORD_VALID_DATE >= #cdt.startPasswordValidDate:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endPasswordValidDate" >
+			<![CDATA[ PASSWORD_VALID_DATE <= #cdt.endPasswordValidDate:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.chgPasswdAlarmDays" >
+			CHG_PASSWD_ALARM_DAYS = #cdt.chgPasswdAlarmDays:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="chgPasswdAlarmDayss" >
+			CHG_PASSWD_ALARM_DAYS in ($chgPasswdAlarmDayss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startChgPasswdAlarmDays" >
+			<![CDATA[ CHG_PASSWD_ALARM_DAYS >= #cdt.startChgPasswdAlarmDays:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endChgPasswdAlarmDays" >
+			<![CDATA[ CHG_PASSWD_ALARM_DAYS <= #cdt.endChgPasswdAlarmDays:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.smsChkPasswd" >
+			SMS_CHK_PASSWD like #cdt.smsChkPasswd:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.smsChkPasswdEqual" >
+			SMS_CHK_PASSWD = #cdt.smsChkPasswdEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="smsChkPasswds" >
+			SMS_CHK_PASSWD in ($smsChkPasswds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.chkpwEffectTime" >
+			CHKPW_EFFECT_TIME = #cdt.chkpwEffectTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="chkpwEffectTimes" >
+			CHKPW_EFFECT_TIME in ($chkpwEffectTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startChkpwEffectTime" >
+			<![CDATA[ CHKPW_EFFECT_TIME >= #cdt.startChkpwEffectTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endChkpwEffectTime" >
+			<![CDATA[ CHKPW_EFFECT_TIME <= #cdt.endChkpwEffectTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.chkpwExpireTime" >
+			CHKPW_EXPIRE_TIME = #cdt.chkpwExpireTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="chkpwExpireTimes" >
+			CHKPW_EXPIRE_TIME in ($chkpwExpireTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startChkpwExpireTime" >
+			<![CDATA[ CHKPW_EXPIRE_TIME >= #cdt.startChkpwExpireTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endChkpwExpireTime" >
+			<![CDATA[ CHKPW_EXPIRE_TIME <= #cdt.endChkpwExpireTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.lockFlag" >
+			LOCK_FLAG = #cdt.lockFlag:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="lockFlags" >
+			LOCK_FLAG in ($lockFlags$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startLockFlag" >
+			<![CDATA[ LOCK_FLAG >= #cdt.startLockFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endLockFlag" >
+			<![CDATA[ LOCK_FLAG <= #cdt.endLockFlag:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.isUpdatePwd" >
+			IS_UPDATE_PWD = #cdt.isUpdatePwd:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="isUpdatePwds" >
+			IS_UPDATE_PWD in ($isUpdatePwds$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startIsUpdatePwd" >
+			<![CDATA[ IS_UPDATE_PWD >= #cdt.startIsUpdatePwd:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endIsUpdatePwd" >
+			<![CDATA[ IS_UPDATE_PWD <= #cdt.endIsUpdatePwd:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.loginAuthCode" >
+			LOGIN_AUTH_CODE like #cdt.loginAuthCode:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.loginAuthCodeEqual" >
+			LOGIN_AUTH_CODE = #cdt.loginAuthCodeEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="loginAuthCodes" >
+			LOGIN_AUTH_CODE in ($loginAuthCodes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom1" >
+			CUSTOM_1 like #cdt.custom1:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom2" >
+			CUSTOM_2 like #cdt.custom2:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom3" >
+			CUSTOM_3 like #cdt.custom3:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom4" >
+			CUSTOM_4 = #cdt.custom4:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom4s" >
+			CUSTOM_4 in ($custom4s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom4" >
+			<![CDATA[ CUSTOM_4 >= #cdt.startCustom4:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom4" >
+			<![CDATA[ CUSTOM_4 <= #cdt.endCustom4:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom5" >
+			CUSTOM_5 = #cdt.custom5:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom5s" >
+			CUSTOM_5 in ($custom5s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom5" >
+			<![CDATA[ CUSTOM_5 >= #cdt.startCustom5:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom5" >
+			<![CDATA[ CUSTOM_5 <= #cdt.endCustom5:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.custom6" >
+			CUSTOM_6 = #cdt.custom6:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="custom6s" >
+			CUSTOM_6 in ($custom6s$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCustom6" >
+			<![CDATA[ CUSTOM_6 >= #cdt.startCustom6:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCustom6" >
+			<![CDATA[ CUSTOM_6 <= #cdt.endCustom6:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.status" >
+			STATUS = #cdt.status:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="statuss" >
+			STATUS in ($statuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startStatus" >
+			<![CDATA[ STATUS >= #cdt.startStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endStatus" >
+			<![CDATA[ STATUS <= #cdt.endStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.dataStatus" >
+			DATA_STATUS = #cdt.dataStatus:INTEGER#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="dataStatuss" >
+			DATA_STATUS in ($dataStatuss$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startDataStatus" >
+			<![CDATA[ DATA_STATUS >= #cdt.startDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endDataStatus" >
+			<![CDATA[ DATA_STATUS <= #cdt.endDataStatus:INTEGER# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creator" >
+			CREATOR like #cdt.creator:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.creatorEqual" >
+			CREATOR = #cdt.creatorEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="creators" >
+			CREATOR in ($creators$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifier" >
+			MODIFIER like #cdt.modifier:VARCHAR# escape '/'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifierEqual" >
+			MODIFIER = #cdt.modifierEqual:VARCHAR#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifiers" >
+			MODIFIER in ($modifiers$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.createTime" >
+			CREATE_TIME = #cdt.createTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="createTimes" >
+			CREATE_TIME in ($createTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startCreateTime" >
+			<![CDATA[ CREATE_TIME >= #cdt.startCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endCreateTime" >
+			<![CDATA[ CREATE_TIME <= #cdt.endCreateTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.modifyTime" >
+			MODIFY_TIME = #cdt.modifyTime:BIGINT#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="modifyTimes" >
+			MODIFY_TIME in ($modifyTimes$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.startModifyTime" >
+			<![CDATA[ MODIFY_TIME >= #cdt.startModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="cdt.endModifyTime" >
+			<![CDATA[ MODIFY_TIME <= #cdt.endModifyTime:BIGINT# ]]>
+		</isNotEmpty>
+	</sql>
+	
+
+	<sql id="sql_update_columns">
+		<isNotNull prepend="," property="record.id"> 
+			ID = #record.id:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.opCode"> 
+			OP_CODE = #record.opCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.opName"> 
+			OP_NAME = #record.opName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.opKind"> 
+			OP_KIND = #record.opKind:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.mobileNo"> 
+			MOBILE_NO = #record.mobileNo:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.emailAdress"> 
+			EMAIL_ADRESS = #record.emailAdress:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.opLevel"> 
+			OP_LEVEL = #record.opLevel:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.supOpId"> 
+			SUP_OP_ID = #record.supOpId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.loginCode"> 
+			LOGIN_CODE = #record.loginCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.loginPasswd"> 
+			LOGIN_PASSWD = #record.loginPasswd:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.shortName"> 
+			SHORT_NAME = #record.shortName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.englishName"> 
+			ENGLISH_NAME = #record.englishName:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.cardTypeId"> 
+			CARD_TYPE_ID = #record.cardTypeId:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.cardNo"> 
+			CARD_NO = #record.cardNo:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.birthday"> 
+			BIRTHDAY = #record.birthday:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.marryStatus"> 
+			MARRY_STATUS = #record.marryStatus:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.gender"> 
+			GENDER = #record.gender:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.religion"> 
+			RELIGION = #record.religion:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.nationalType"> 
+			NATIONAL_TYPE = #record.nationalType:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.educationLevel"> 
+			EDUCATION_LEVEL = #record.educationLevel:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.incomeLevel"> 
+			INCOME_LEVEL = #record.incomeLevel:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.politicsFace"> 
+			POLITICS_FACE = #record.politicsFace:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.officeTel"> 
+			OFFICE_TEL = #record.officeTel:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.faxId"> 
+			FAX_ID = #record.faxId:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.homeTel"> 
+			HOME_TEL = #record.homeTel:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.wirelessCall"> 
+			WIRELESS_CALL = #record.wirelessCall:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.alarmMobileNo"> 
+			ALARM_MOBILE_NO = #record.alarmMobileNo:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.familyInfo"> 
+			FAMILY_INFO = #record.familyInfo:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.contactAddress"> 
+			CONTACT_ADDRESS = #record.contactAddress:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.postalCode"> 
+			POSTAL_CODE = #record.postalCode:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.securityId"> 
+			SECURITY_ID = #record.securityId:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.carNo"> 
+			CAR_NO = #record.carNo:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.characterDesc"> 
+			CHARACTER_DESC = #record.characterDesc:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.notes"> 
+			NOTES = #record.notes:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.recentPassword"> 
+			RECENT_PASSWORD = #record.recentPassword:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.recentPassTimes"> 
+			RECENT_PASS_TIMES = #record.recentPassTimes:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.minPasswdLength"> 
+			MIN_PASSWD_LENGTH = #record.minPasswdLength:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.allowChangePasswd"> 
+			ALLOW_CHANGE_PASSWD = #record.allowChangePasswd:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.acctEffectDate"> 
+			ACCT_EFFECT_DATE = #record.acctEffectDate:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.acctExpireDate"> 
+			ACCT_EXPIRE_DATE = #record.acctExpireDate:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.multiLoginFlag"> 
+			MULTI_LOGIN_FLAG = #record.multiLoginFlag:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.lastLoginLogId"> 
+			LAST_LOGIN_LOG_ID = #record.lastLoginLogId:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.tryTimes"> 
+			TRY_TIMES = #record.tryTimes:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.loginFlag"> 
+			LOGIN_FLAG = #record.loginFlag:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.superUserFlag"> 
+			SUPER_USER_FLAG = #record.superUserFlag:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.passwdValidDays"> 
+			PASSWD_VALID_DAYS = #record.passwdValidDays:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.cancelDays"> 
+			CANCEL_DAYS = #record.cancelDays:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.passwordValidDate"> 
+			PASSWORD_VALID_DATE = #record.passwordValidDate:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.chgPasswdAlarmDays"> 
+			CHG_PASSWD_ALARM_DAYS = #record.chgPasswdAlarmDays:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.smsChkPasswd"> 
+			SMS_CHK_PASSWD = #record.smsChkPasswd:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.chkpwEffectTime"> 
+			CHKPW_EFFECT_TIME = #record.chkpwEffectTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.chkpwExpireTime"> 
+			CHKPW_EXPIRE_TIME = #record.chkpwExpireTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.lockFlag"> 
+			LOCK_FLAG = #record.lockFlag:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.isUpdatePwd"> 
+			IS_UPDATE_PWD = #record.isUpdatePwd:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.loginAuthCode"> 
+			LOGIN_AUTH_CODE = #record.loginAuthCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom1"> 
+			CUSTOM_1 = #record.custom1:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom2"> 
+			CUSTOM_2 = #record.custom2:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom3"> 
+			CUSTOM_3 = #record.custom3:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom4"> 
+			CUSTOM_4 = #record.custom4:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom5"> 
+			CUSTOM_5 = #record.custom5:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.custom6"> 
+			CUSTOM_6 = #record.custom6:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.status"> 
+			STATUS = #record.status:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.dataStatus"> 
+			DATA_STATUS = #record.dataStatus:INTEGER#
+		</isNotNull>
+		<isNotNull prepend="," property="record.creator"> 
+			CREATOR = #record.creator:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifier"> 
+			MODIFIER = #record.modifier:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="," property="record.createTime"> 
+			CREATE_TIME = #record.createTime:BIGINT#
+		</isNotNull>
+		<isNotNull prepend="," property="record.modifyTime"> 
+			MODIFY_TIME = #record.modifyTime:BIGINT#
+		</isNotNull>
+	</sql>
+	
+
+	<sql id="sql_query_columns">
+		ID, OP_CODE, OP_NAME, OP_KIND, MOBILE_NO, EMAIL_ADRESS, 
+		OP_LEVEL, SUP_OP_ID, LOGIN_CODE, LOGIN_PASSWD, SHORT_NAME, ENGLISH_NAME, 
+		CARD_TYPE_ID, CARD_NO, BIRTHDAY, MARRY_STATUS, GENDER, RELIGION, 
+		NATIONAL_TYPE, EDUCATION_LEVEL, INCOME_LEVEL, POLITICS_FACE, OFFICE_TEL, FAX_ID, 
+		HOME_TEL, WIRELESS_CALL, ALARM_MOBILE_NO, FAMILY_INFO, CONTACT_ADDRESS, POSTAL_CODE, 
+		SECURITY_ID, CAR_NO, CHARACTER_DESC, NOTES, RECENT_PASSWORD, RECENT_PASS_TIMES, 
+		MIN_PASSWD_LENGTH, ALLOW_CHANGE_PASSWD, ACCT_EFFECT_DATE, ACCT_EXPIRE_DATE, MULTI_LOGIN_FLAG, LAST_LOGIN_LOG_ID, 
+		TRY_TIMES, LOGIN_FLAG, SUPER_USER_FLAG, PASSWD_VALID_DAYS, CANCEL_DAYS, PASSWORD_VALID_DATE, 
+		CHG_PASSWD_ALARM_DAYS, SMS_CHK_PASSWD, CHKPW_EFFECT_TIME, CHKPW_EXPIRE_TIME, LOCK_FLAG, IS_UPDATE_PWD, 
+		LOGIN_AUTH_CODE, CUSTOM_1, CUSTOM_2, CUSTOM_3, CUSTOM_4, CUSTOM_5, 
+		CUSTOM_6, STATUS, DATA_STATUS, CREATOR, MODIFIER, CREATE_TIME, 
+		MODIFY_TIME
+	</sql>
+	
+
+	
+
+	<select id="selectList" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_OP.sql_query_columns" />
+		from SYS_OP 
+			<dynamic prepend="where" >
+				<include refid="SYS_OP.sql_query_where"/>
+			</dynamic>
+		order by 
+			<isNotEmpty property="orders" >
+				$orders$
+			</isNotEmpty>
+			<isEmpty property="orders" >
+				ID
+			</isEmpty>
+	</select>
+	<select id="selectCount" parameterClass="java.util.Map" resultClass="java.lang.Long">
+		select count(1) from SYS_OP 
+			<dynamic prepend="where" >
+				<include refid="SYS_OP.sql_query_where"/>
+			</dynamic>
+	</select>
+	<select id="selectById" parameterClass="java.util.Map" resultMap="queryResult">
+		select 
+			<include refid="SYS_OP.sql_query_columns" />
+		from SYS_OP where ID=#id:BIGINT# and DATA_STATUS=1  
+	</select>
+	
+
+	
+
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into SYS_OP(
+			ID, OP_CODE, OP_NAME, OP_KIND, MOBILE_NO, 
+			EMAIL_ADRESS, OP_LEVEL, SUP_OP_ID, LOGIN_CODE, LOGIN_PASSWD, 
+			SHORT_NAME, ENGLISH_NAME, CARD_TYPE_ID, CARD_NO, BIRTHDAY, 
+			MARRY_STATUS, GENDER, RELIGION, NATIONAL_TYPE, EDUCATION_LEVEL, 
+			INCOME_LEVEL, POLITICS_FACE, OFFICE_TEL, FAX_ID, HOME_TEL, 
+			WIRELESS_CALL, ALARM_MOBILE_NO, FAMILY_INFO, CONTACT_ADDRESS, POSTAL_CODE, 
+			SECURITY_ID, CAR_NO, CHARACTER_DESC, NOTES, RECENT_PASSWORD, 
+			RECENT_PASS_TIMES, MIN_PASSWD_LENGTH, ALLOW_CHANGE_PASSWD, ACCT_EFFECT_DATE, ACCT_EXPIRE_DATE, 
+			MULTI_LOGIN_FLAG, LAST_LOGIN_LOG_ID, TRY_TIMES, LOGIN_FLAG, SUPER_USER_FLAG, 
+			PASSWD_VALID_DAYS, CANCEL_DAYS, PASSWORD_VALID_DATE, CHG_PASSWD_ALARM_DAYS, SMS_CHK_PASSWD, 
+			CHKPW_EFFECT_TIME, CHKPW_EXPIRE_TIME, LOCK_FLAG, IS_UPDATE_PWD, LOGIN_AUTH_CODE, 
+			CUSTOM_1, CUSTOM_2, CUSTOM_3, CUSTOM_4, CUSTOM_5, 
+			CUSTOM_6, STATUS, DATA_STATUS, CREATOR, MODIFIER, 
+			CREATE_TIME, MODIFY_TIME)
+		values (
+			#record.id:BIGINT#, #record.opCode:VARCHAR#, #record.opName:VARCHAR#, #record.opKind:INTEGER#, #record.mobileNo:VARCHAR#, 
+			#record.emailAdress:VARCHAR#, #record.opLevel:INTEGER#, #record.supOpId:BIGINT#, #record.loginCode:VARCHAR#, #record.loginPasswd:VARCHAR#, 
+			#record.shortName:VARCHAR#, #record.englishName:VARCHAR#, #record.cardTypeId:INTEGER#, #record.cardNo:VARCHAR#, #record.birthday:INTEGER#, 
+			#record.marryStatus:INTEGER#, #record.gender:INTEGER#, #record.religion:INTEGER#, #record.nationalType:INTEGER#, #record.educationLevel:INTEGER#, 
+			#record.incomeLevel:BIGINT#, #record.politicsFace:INTEGER#, #record.officeTel:VARCHAR#, #record.faxId:VARCHAR#, #record.homeTel:VARCHAR#, 
+			#record.wirelessCall:VARCHAR#, #record.alarmMobileNo:VARCHAR#, #record.familyInfo:VARCHAR#, #record.contactAddress:VARCHAR#, #record.postalCode:INTEGER#, 
+			#record.securityId:VARCHAR#, #record.carNo:VARCHAR#, #record.characterDesc:VARCHAR#, #record.notes:VARCHAR#, #record.recentPassword:VARCHAR#, 
+			#record.recentPassTimes:INTEGER#, #record.minPasswdLength:INTEGER#, #record.allowChangePasswd:INTEGER#, #record.acctEffectDate:BIGINT#, #record.acctExpireDate:BIGINT#, 
+			#record.multiLoginFlag:INTEGER#, #record.lastLoginLogId:BIGINT#, #record.tryTimes:INTEGER#, #record.loginFlag:INTEGER#, #record.superUserFlag:INTEGER#, 
+			#record.passwdValidDays:BIGINT#, #record.cancelDays:INTEGER#, #record.passwordValidDate:BIGINT#, #record.chgPasswdAlarmDays:BIGINT#, #record.smsChkPasswd:VARCHAR#, 
+			#record.chkpwEffectTime:BIGINT#, #record.chkpwExpireTime:BIGINT#, #record.lockFlag:INTEGER#, #record.isUpdatePwd:INTEGER#, #record.loginAuthCode:VARCHAR#, 
+			#record.custom1:VARCHAR#, #record.custom2:VARCHAR#, #record.custom3:VARCHAR#, #record.custom4:BIGINT#, #record.custom5:BIGINT#, 
+			#record.custom6:BIGINT#, #record.status:INTEGER#, #record.dataStatus:INTEGER#, #record.creator:VARCHAR#, #record.modifier:VARCHAR#, 
+			#record.createTime:BIGINT#, #record.modifyTime:BIGINT#)
+	</insert>
+	
+
+	
+
+	<update id="updateById" parameterClass="java.util.Map">
+		update SYS_OP
+			<dynamic prepend="set" > 
+				<include refid="SYS_OP.sql_update_columns"/> 
+			</dynamic>
+		where ID = #id:BIGINT#
+	</update>
+	<update id="updateByCdt" parameterClass="java.util.Map">
+		update SYS_OP
+			<dynamic prepend="set" > 
+				<include refid="SYS_OP.sql_update_columns"/> 
+			</dynamic>
+			<dynamic prepend="where" > 
+				<include refid="SYS_OP.sql_query_where"/> 
+			</dynamic>
+	</update>
+	
+	
+
+	
+
+	<delete id="deleteById" parameterClass="java.util.Map">
+		delete from SYS_OP where ID = #id:BIGINT#
+	</delete>
+	<delete id="deleteByCdt" parameterClass="java.util.Map">
+		delete from SYS_OP
+			<dynamic prepend="where" > 
+				<include refid="SYS_OP.sql_query_where"/> 
+			</dynamic>
+	</delete>
+	
+
+
+
+</sqlMap>
