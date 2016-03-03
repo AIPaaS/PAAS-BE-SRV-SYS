@@ -34,6 +34,6 @@
     
     <bean class="com.aic.paas.sys.provider.db.impl.WsMerchentDaoDefinition" />
    
-	
+	 <bean class="com.aic.paas.sys.provider.db.impl.BsSyncdataConfigDaoDefinition" />
 		
 </beans>

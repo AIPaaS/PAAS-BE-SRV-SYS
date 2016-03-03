@@ -30,5 +30,7 @@
 	
 	<sqlMap resource="sql/sys/WS_MERCHENT_SqlMap.xml" />
 	
+	<sqlMap resource="sql/sys/BS_SYNCDATA_CONFIG_SqlMap.xml" />
+	
 	
 </sqlMapConfig>
