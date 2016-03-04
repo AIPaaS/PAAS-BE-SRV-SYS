@@ -32,7 +32,7 @@ public interface SysOpSvc {
 	 * @param orders : 排序字段, 多字段以逗号分隔
 	 * @return 操作员表[SYS_OP]查询列表
 	 */
-	public List<SysOp> queryList(Integer pageNum, Integer pageSize, CSysOp cdt, String orders);
+	public List<SysOp> queryPage2(Integer pageNum, Integer pageSize, CSysOp cdt, String orders);
 	
 	
 

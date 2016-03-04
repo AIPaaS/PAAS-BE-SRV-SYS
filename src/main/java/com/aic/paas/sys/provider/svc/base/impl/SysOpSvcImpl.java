@@ -39,6 +39,12 @@ public class SysOpSvcImpl implements SysOpSvc {
 	public Page<SysOp> queryPage(Integer pageNum, Integer pageSize, CSysOp cdt, String orders) {
 		return sysOpDao.selectPage(pageNum, pageSize, cdt, orders);
 	}
+	
+	
+	@Override
+	public List<SysOp> queryPage2(Integer pageNum, Integer pageSize, CSysOp cdt, String orders) {
+		return sysOpDao.selectList(pageNum, pageSize, cdt, orders);
+	}
 
 
 	@Override
@@ -48,10 +54,7 @@ public class SysOpSvcImpl implements SysOpSvc {
 	
 	
 	
-	@Override
-	public List<SysOp> queryList(Integer pageNum, Integer pageSize, CSysOp cdt, String orders) {
-		return sysOpDao.selectList(pageNum, pageSize, cdt, orders);
-	}
+	
 
 	
 	
