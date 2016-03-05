@@ -23,6 +23,18 @@ public interface SysOpSvc {
 	 * @return 操作员表[SYS_OP]分页列表对象
 	 */
 	public Page<SysOp> queryPage(Integer pageNum, Integer pageSize, CSysOp cdt, String orders);
+	
+	
+	
+	/**
+	 * 分页查询
+	 * @param cdt : 条件对象
+	 * @param orders : 排序字段, 多字段以逗号分隔
+	 * @return 操作员表[SYS_OP]查询列表
+	 */
+	public List<SysOp> queryPage2(Integer pageNum, Integer pageSize, CSysOp cdt, String orders);
+	
+	
 
 
 	/**

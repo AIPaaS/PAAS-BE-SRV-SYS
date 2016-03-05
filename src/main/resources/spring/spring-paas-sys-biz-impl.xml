@@ -46,6 +46,7 @@
 	<bean id="MerchentSvc" class="com.aic.paas.sys.provider.svc.mnt.impl.MerchentSvcImpl" >
 		<property name="mntDefaultRoleId" value="${project.mnt.default.roleId}" />
 	</bean>
+	<bean class="com.aic.paas.sys.provider.svc.sync.impl.BsSyncdataConfigSvcImpl" />
 	
 	
 </beans>

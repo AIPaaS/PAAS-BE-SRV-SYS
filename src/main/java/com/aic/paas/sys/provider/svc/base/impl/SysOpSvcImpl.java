@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.binary.core.util.BinaryUtils;
-import com.binary.framework.exception.ServiceException;
-import com.binary.jdbc.Page;
 import com.aic.paas.sys.provider.bean.CSysOp;
 import com.aic.paas.sys.provider.bean.SysOp;
 import com.aic.paas.sys.provider.db.SysOpDao;
 import com.aic.paas.sys.provider.svc.base.SysOpSvc;
+import com.binary.core.util.BinaryUtils;
+import com.binary.framework.exception.ServiceException;
+import com.binary.jdbc.Page;
 
 
 /**
@@ -39,12 +39,23 @@ public class SysOpSvcImpl implements SysOpSvc {
 	public Page<SysOp> queryPage(Integer pageNum, Integer pageSize, CSysOp cdt, String orders) {
 		return sysOpDao.selectPage(pageNum, pageSize, cdt, orders);
 	}
+	
+	
+	@Override
+	public List<SysOp> queryPage2(Integer pageNum, Integer pageSize, CSysOp cdt, String orders) {
+		return sysOpDao.selectList(pageNum, pageSize, cdt, orders);
+	}
 
 
 	@Override
 	public List<SysOp> queryList(CSysOp cdt, String orders) {
 		return sysOpDao.selectList(cdt, orders);
 	}
+	
+	
+	
+	
+
 	
 	
 	@Override
@@ -138,6 +149,8 @@ public class SysOpSvcImpl implements SysOpSvc {
 		return sysOpDao.updateByCdt(record, cdt);
 	}
 
+
+	
 
 	
 

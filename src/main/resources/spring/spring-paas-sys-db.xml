@@ -106,5 +106,8 @@
 		</bean>
 		
 		
+		<bean class="com.aic.paas.sys.provider.db.impl.BsSyncdataConfigDaoImpl" parent="dao.paas.sys.parent" >
+			<property name="daoDefinition" ref="com.aic.paas.sys.provider.db.impl.BsSyncdataConfigDaoDefinition" />
+		</bean>
 		
 </beans>
