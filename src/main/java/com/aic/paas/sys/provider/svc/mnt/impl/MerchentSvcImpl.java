@@ -407,8 +407,8 @@ public class MerchentSvcImpl implements MerchentSvc {
 	
 	
 	@Override
-	public Page<SysOpInfo> queryOpInfoPage(Integer pageNum, Integer pageSize, CSysOp cdt, String orders) {
-		Page<SysOp> page = opDao.selectPage(pageNum, pageSize, cdt, orders);
+	public Page<SysOpInfo> queryOpInfoPage(Integer pageNum, Integer pageSize, Long orgId,Boolean direct,Boolean admin ,CSysOp cdt, String orders) {
+		Page<SysOp> page = opDao.selectPageByOrg(pageNum, pageSize, orgId, direct, admin, cdt, orders);
 		List<SysOp> ls = page.getData();
 		List<SysOpInfo> infols = fillOpInfo(ls);
 		return new Page<SysOpInfo>(page.getPageNum(), page.getPageSize(), page.getTotalRows(), page.getTotalPages(), infols);
