@@ -108,7 +108,7 @@ public interface MerchentSvc {
 	
 	
 	/**
-	 * 查询用户对应角色
+	 *  查询用户对应角色
 	 * @param opId
 	 * @return
 	 */
