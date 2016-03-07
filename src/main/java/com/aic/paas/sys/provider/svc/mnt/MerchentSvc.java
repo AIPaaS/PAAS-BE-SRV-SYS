@@ -11,7 +11,11 @@ import com.aic.paas.sys.provider.bean.WsMerchent;
 import com.aic.paas.sys.provider.svc.bean.RoleAuth;
 import com.aic.paas.sys.provider.svc.bean.SysOpInfo;
 import com.binary.jdbc.Page;
-
+/**
+ * 
+ * @author oriiro
+ *
+ */
 public interface MerchentSvc {
 	
 	
@@ -108,7 +112,7 @@ public interface MerchentSvc {
 	
 	
 	/**
-	 *  查询用户对应角色
+	 * 查询用户对应角色
 	 * @param opId
 	 * @return
 	 */
