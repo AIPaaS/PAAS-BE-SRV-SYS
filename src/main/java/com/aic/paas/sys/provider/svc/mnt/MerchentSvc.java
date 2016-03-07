@@ -11,11 +11,7 @@ import com.aic.paas.sys.provider.bean.WsMerchent;
 import com.aic.paas.sys.provider.svc.bean.RoleAuth;
 import com.aic.paas.sys.provider.svc.bean.SysOpInfo;
 import com.binary.jdbc.Page;
-/**
- * 
- * @author oriiro
- *
- */
+
 public interface MerchentSvc {
 	
 	
@@ -125,17 +121,13 @@ public interface MerchentSvc {
 	 * 分页查询
 	 * @param pageNum : 指定页码
 	 * @param pageSize : 指定页行数
-	 * @param orgId 指定组织
-	 * @param direct 是否直属组织, 为null表示不区分
-	 * @param admin 是否管理员, 为null表示不区分
 	 * @param cdt : 条件对象
 	 * @param orders : 排序字段, 多字段以逗号分隔
 	 * @return 操作员表[SYS_OP]分页列表对象
 	 */
-	public Page<SysOpInfo> queryOpInfoPage(Integer pageNum, Integer pageSize, Long orgId,Boolean direct,Boolean admin ,CSysOp cdt, String orders);
+	public Page<SysOpInfo> queryOpInfoPage(Integer pageNum, Integer pageSize, CSysOp cdt, String orders);
 
-
-
+	
 
 	
 	/**
@@ -147,7 +139,29 @@ public interface MerchentSvc {
 	public List<SysOpInfo> queryOpInfoList(CSysOp cdt, String orders);
 	
 	
-	
+	/**
+	 * 分页查询
+	 * @param pageNum : 指定页码
+	 * @param pageSize : 指定页行数
+	 * @param orgId 指定组织
+	 * @param direct 是否直属组织, 为null表示不区分
+	 * @param admin 是否管理员, 为null表示不区分
+	 * @param cdt : 条件对象
+	 * @param orders : 排序字段, 多字段以逗号分隔
+	 * @return 操作员表[SYS_OP]分页列表对象
+	 */
+	public Page<SysOpInfo> queryOpInfoPageByOrg(Integer pageNum, Integer pageSize, Long orgId,Boolean direct,Boolean admin ,CSysOp cdt, String orders);
+
+	/**
+	 * 不分页查询
+	 * @param cdt : 条件对象
+	 * @param orgId 指定组织
+	 * @param direct 是否直属组织, 为null表示不区分
+	 * @param admin 是否管理员, 为null表示不区分
+	 * @param orders : 排序字段, 多字段以逗号分隔
+	 * @return 操作员表[SYS_OP]查询列表
+	 */
+	public List<SysOpInfo> queryOpInfoListByOrg( Long orgId, Boolean direct, Boolean admin , CSysOp cdt, String orders);
 	
 	/**
 	 * 跟据opId查询详情
