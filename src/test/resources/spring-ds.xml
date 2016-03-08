@@ -24,7 +24,7 @@
 					<list>
 						<bean class="com.binary.jdbc.ds.support.PoolDataSource">
 							<constructor-arg value="${ds.jdbc.paas.sys.dsname}" />	<!-- name -->
-							<constructor-arg value="${ds.jdbc.paas.sys.jdbctype}" />	<!-- jdbcType -->
+							<constructor-arg value="${ds.jdbc.paas.sys.dstype}" />	<!-- jdbcType -->
 							<constructor-arg value="org.apache.commons.dbcp.BasicDataSource" />	<!-- poolClass -->
 							<constructor-arg>				<!-- properties -->
 								<map>
