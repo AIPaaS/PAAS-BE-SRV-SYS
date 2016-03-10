@@ -35,7 +35,7 @@ public class WsMerchentDaoImpl extends IBatisDaoTemplate<WsMerchent, CWsMerchent
 			.append("        from SYS_MENU a ")
 			.append("             inner join SYS_MODU b on a.modu_id=b.id and b.data_status=1 and b.status=1 and b.modu_type=2 ")
 			.append("             inner join SYS_MODU_ROLE c on b.id=c.modu_id ")
-			.append("             inner join SYS_ROLE d on d.data_status=1 and d.status=1 and d.role_type=2 and d.id in (").append(Conver.toString(roleIds)).append(")")
+			.append("             inner join SYS_ROLE d on d.data_status=1 and d.status=1 and d.role_type=2  and d.id=c.role_id and d.id in (").append(Conver.toString(roleIds)).append(")")
 			.append("        where a.data_status=1 and a.status=1 and a.menu_type=2 ")
 			.append("        order by a.order_no,a.menu_code ");
 
