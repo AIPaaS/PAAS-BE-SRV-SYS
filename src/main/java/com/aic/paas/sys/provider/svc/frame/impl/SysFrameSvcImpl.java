@@ -405,6 +405,12 @@ public class SysFrameSvcImpl implements SysFrameSvc {
 		return sysResAuthSvc.verifyModu(opId, modu);
 	}
 
+
+	@Override
+	public boolean verifyModuCode(Long opId, String moduCode) {
+		return sysResAuthSvc.verifyModuCode(opId, moduCode);
+	}
+
 	
 	
 	

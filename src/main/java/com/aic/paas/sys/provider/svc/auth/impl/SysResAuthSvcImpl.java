@@ -177,6 +177,25 @@ public class SysResAuthSvcImpl extends AbstractSysAuth implements SysResAuthSvc 
 
 
 
+	@Override
+	public boolean verifyModuCode(Long opId, String moduCode) {
+		BinaryUtils.checkEmpty(opId, "opId");
+		BinaryUtils.checkEmpty(moduCode, "moduCode");
+		
+		CSysModu cdt = new CSysModu();
+		cdt.setModuCodeEqual(moduCode);
+		cdt.setStatus(1);
+		List<SysModu> modus = moduDao.selectList(cdt, null);
+		if(modus.size() == 0) throw new ServiceException(" is not found modu by moduCode '"+moduCode+"'! ");
+		SysModu modu = modus.get(0);
+		
+		return verifyModu(opId, modu);
+	}
+
+
+
+
+
 	
 	
 	

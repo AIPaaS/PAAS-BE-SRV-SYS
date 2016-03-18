@@ -255,7 +255,13 @@ public interface SysFrameSvc {
 	
 	
 	
-	
+	/**
+	 * 验证用户是否具有指定模块的权限
+	 * @param opId : 用户ID
+	 * @param moduCode : 被验证的模块编码
+	 * @return
+	 */
+	public boolean verifyModuCode(Long opId, String moduCode);
 	
 	
 }
