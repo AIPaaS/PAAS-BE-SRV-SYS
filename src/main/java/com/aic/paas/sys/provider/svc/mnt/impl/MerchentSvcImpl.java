@@ -35,7 +35,7 @@ import com.aic.paas.sys.provider.svc.bean.MenuNode;
 import com.aic.paas.sys.provider.svc.bean.RoleAuth;
 import com.aic.paas.sys.provider.svc.bean.SysOpInfo;
 import com.aic.paas.sys.provider.svc.mnt.MerchentSvc;
-import com.binary.core.encrypt.Encrypt;
+import com.binary.core.encrypt.EncryptAES;
 import com.binary.core.util.BinaryUtils;
 import com.binary.framework.bean.User;
 import com.binary.framework.exception.ServiceException;
@@ -119,7 +119,7 @@ public class MerchentSvcImpl implements MerchentSvc {
 	
 	
 	private String encryptPwd(String password) {
-		return Encrypt.encrypt(password);
+		return EncryptAES.encrypt(password);
 	}
 
 	
@@ -291,7 +291,7 @@ public class MerchentSvcImpl implements MerchentSvc {
 		
 		String passwd = record.getLoginPasswd();
 		if(!BinaryUtils.isEmpty(passwd)) {
-			record.setLoginPasswd(Encrypt.encrypt(passwd));
+			record.setLoginPasswd(EncryptAES.encrypt(passwd));
 			record.setCustom1(passwd);
 		}
 		

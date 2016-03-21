@@ -42,7 +42,7 @@ import com.aic.paas.sys.provider.svc.base.SysCodeSvc;
 import com.aic.paas.sys.provider.svc.bean.SysCodeBatch;
 import com.aic.paas.sys.provider.svc.bean.SysModuInfo;
 import com.aic.paas.sys.provider.svc.frame.SysFrameSvc;
-import com.binary.core.encrypt.Encrypt;
+import com.binary.core.encrypt.EncryptAES;
 import com.binary.core.lang.Conver;
 import com.binary.core.util.BinaryUtils;
 import com.binary.framework.exception.ServiceException;
@@ -307,11 +307,11 @@ public class SysFrameSvcImpl implements SysFrameSvc {
 		
 		SysOp op = opDao.selectById(opId);
 		String pwd = op.getLoginPasswd();
-		String inputpwd = Encrypt.encrypt(oldPwd);
+		String inputpwd = EncryptAES.encrypt(oldPwd);
 		if(!pwd.equals(inputpwd)) throw new ServiceException(" oldPwd is wrong ! ");
 		
 		SysOp upop = new SysOp();
-		upop.setLoginPasswd(Encrypt.encrypt(newPwd));
+		upop.setLoginPasswd(EncryptAES.encrypt(newPwd));
 		upop.setIsUpdatePwd(0);
 		return opDao.updateById(upop, opId);
 	}
